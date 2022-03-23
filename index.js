@@ -21,9 +21,9 @@ if (path.includes('/ml')) {
 	})
 	const response = await fetch(request)
 	const data = response.body
-	const par = JSON.parse(data)
-	const user = par.confirmationFields.username
-	return new Response(user, {
+	//const par = JSON.parse(data)
+	//const user = par.confirmationFields.username
+	return new Response(data, {
 		status: 200,
 		headers: {
 			'Content-Type': 'text/plain'
