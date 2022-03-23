@@ -22,7 +22,7 @@ if (path.includes('/ml')) {
 	const response = await fetch(request)
 	const data = response.body
 	const par = JSON.parse(data)
-	const user = par.confirmationFields.username
+	const user = par.result
 	return new Response(user, {
 		status: 200,
 		headers: {
