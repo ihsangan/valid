@@ -7,28 +7,6 @@ async function handleRequest(request) {
   const params = url.searchParams
   const method = request.method
   const headers = request.headers
-  const body = await request.json()
-  const response = {
-    status: 200,
-    body: {
-      code: 0,
-      message: 'success',
-      data: {
-	path,
-	params,
-	method,
-	headers,
-	body
-      }
-    }
-  }
-
-  return new Response(JSON.stringify(response), {
-    status: response.status,
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
 if (path.includes('/ml') {
 	const id = params.get('id')
 	const srv = params.get('server')
