@@ -7,7 +7,29 @@ async function handleRequest(request) {
   const params = url.searchParams
   const method = request.method
   const headers = request.headers
-if (path.includes('/ml') {
+  const body = await request.json()
+  const response = {
+    status: 200,
+    body: {
+      code: 0,
+      message: 'success',
+      data: {
+	path,
+	params,
+	method,
+	headers,
+	body
+      }
+    }
+  }
+
+  return new Response(JSON.stringify(response), {
+    status: response.status,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+if (path.includes('/ml')) {
 	const id = params.get('id')
 	const srv = params.get('server')
 	const endpoint = 'https://order-sg.codashop.com/initPayment.action'
@@ -30,7 +52,7 @@ if (path.includes('/ml') {
 		}
 	})
 }
-	if (path.includes'/ff') {
+	if (path.includes('/ff')) {
 		const id = params.get('id')
 		const endpoint = 'https://order-sg.codashop.com/initPayment.action'
 		const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID`
