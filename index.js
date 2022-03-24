@@ -24,7 +24,7 @@ if (path.includes('/ml')) {
 	//const par = JSON.parse(data)
         //const obj = new Object(data).toString()
 	//const user = par.result
-	return new Response(JSON.parse(JSON.stringify(data)), {
+	return new Response(response.body, {
 		status: 200,
 		headers: {
 			'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ if (path.includes('/ml')) {
 		const response = await fetch(request)
 		const data = JSON.stringify(response.body)
 		const result = JSON.parse(data)
-		const user = result.username
+		const user = result.result
 		return new Response(user, {
 			status: 200,
 			headers: {
