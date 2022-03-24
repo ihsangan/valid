@@ -23,7 +23,7 @@ if (path.includes('/ml')) {
 	const data = JSON.stringify(response.body)
 	const par = JSON.parse(data)
 	const user = par.result
-	return new Response(data, {
+	return new Response(response.body, {
 		status: 200,
 		headers: {
 			'Content-Type': 'text/plain'
