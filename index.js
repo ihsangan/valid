@@ -20,7 +20,7 @@ if (path.includes('/ml')) {
 		body
 	})
 	const response = await fetch(request)
-	const data = `${response.body}'
+	const data = `${response.body}`
 	//const par = JSON.parse(data)
         //const obj = new Object(data).toString()
 	//const user = par.result
@@ -34,7 +34,7 @@ if (path.includes('/ml')) {
 	if (path.includes('/ff')) {
 		const id = params.get('id')
 		const endpoint = 'https://order-sg.codashop.com/initPayment.action'
-		const bodyFF = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID`
+		const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID`
 		const request = new Request(endpoint, {
 			method: 'POST',
 			headers: {
