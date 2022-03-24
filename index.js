@@ -20,7 +20,7 @@ if (path.includes('/ml')) {
 		body
 	})
 	const response = await fetch(request)
-	const data = `${response.json}`
+	const data = `${response.json()}`
 	//const par = JSON.parse(data)
         //const obj = new Object(data).toString()
 	//const user = par.result
