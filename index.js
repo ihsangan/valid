@@ -20,11 +20,11 @@ if (path.includes('/ml')) {
 		body
 	})
 	const response = await fetch(request)
-	const data = response.body
-	const par = JSON.parse(data)
-        const obj = new Object(data).toString()
-	const user = par.result
-	return new Response(obj.result, {
+	//const data = response.body
+	//const par = JSON.parse(data)
+        //const obj = new Object(data).toString()
+	//const user = par.result
+	return new Response(JSON.stringify(response.body), {
 		status: 200,
 		headers: {
 			'Content-Type': 'text/plain'
