@@ -24,7 +24,7 @@ if (path.includes('/ml')) {
 	//const par = JSON.parse(data)
         //const obj = new Object(data).toString()
 	//const user = par.result
-	return new Response(JSON.parse(response.body), {
+	return new Response(JSON.stringify(await response.json), {
 		status: 200,
 		headers: {
 			'Content-Type': 'text/plain'
