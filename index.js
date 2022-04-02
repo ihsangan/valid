@@ -9,6 +9,7 @@ async function handleRequest(request) {
   const id = params.get('id')
   const srv = params.get('server')
   const zone = params.get('zone')
+  try {
   if (path.includes('/ml')) {
     const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
     const request = new Request(endpoint, {
@@ -51,17 +52,18 @@ async function handleRequest(request) {
       }
     })
   }
-  catch (error) {
-    return new Response(`{"success":false,"message":"${error}"}`, {
-      status: 500,
+  else {
+    return new Response(`{"success":false,"message":"Bad Request"}`, {
+      status: 400,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       }
     })
   }
-  else {
-    return new Response(`{"success":false,"message":"Bad Request"}`, {
-      status: 400,
+}
+  catch (error) {
+    return new Response(`{"success":false,"message":"${error}"}`, {
+      status: 500,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       }
