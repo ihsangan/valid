@@ -20,8 +20,8 @@ if (path.includes('/ml')) {
 		body
 	})
 	const response = await fetch(request)
-	const data = response.json()
-	return new Response(decodeURIComponent(data.result), {
+	const data = await response.json()
+	return new Response(decodeURI(data.result), {
 		status: 200,
 		headers: {
 			'Content-Type': 'application/json'
