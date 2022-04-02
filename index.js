@@ -10,7 +10,7 @@ async function handleRequest(request) {
   const id = params.get('id')
   const srv = params.get('server')
   if (path.includes('/ml')) {
-    const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${srv}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
+    const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
     const request = new Request(endpoint, {
       method: 'POST',
       headers: {
