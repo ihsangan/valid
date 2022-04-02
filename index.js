@@ -35,19 +35,18 @@ async function handleRequest(request) {
     const request = new Request(endpoint, {
       method: 'POST',
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET",
-        "Access-Control-Expose-Headers": "*",
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       body
     })
     const response = await fetch(request)
     const data = await response.json()
-    const i = 0
-    return new Response(`{"nickname":"${data.confirmationFields.roles[i].role}"}`, {
+    return new Response(`{"nickname":"${data.confirmationFields.roles[0].role}"}`, {
       status: 200,
       headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Expose-Headers': '*',
         'Content-Type': 'application/json; charset=utf-8'
       }
     })
