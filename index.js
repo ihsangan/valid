@@ -20,7 +20,7 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(decodeURIComponent(data.result), {
+    return new Response(`{"game":"Mobile Legends: Bang Bang","id":"${id}","zoneId":"${zone}","name":"${data.confirmationFields.username}"}`, {
       status: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
