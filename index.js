@@ -21,7 +21,7 @@ if (path.includes('/ml')) {
 	})
 	const response = await fetch(request)
 	const data = await response.json()
-	return new Response(data, {
+	return new Response(data.result, {
 		status: 200,
 		headers: {
 			'Content-Type': 'application/json'
