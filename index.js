@@ -5,7 +5,6 @@ async function handleRequest(request) {
   const url = new URL(request.url)
   const path = url.pathname
   const params = url.searchParams
-  const headers = request.headers
   const endpoint = 'https://order-sg.codashop.com/initPayment.action'
   const id = params.get('id')
   const srv = params.get('server')
@@ -21,7 +20,7 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"game":"Mobile Legends: Bang Bang","id":"${id}","zoneId":"${zone}","name":"${data.confirmationFields.username}"}`, {
+    return new Response(`{"success":true,"game":"Mobile Legends: Bang Bang","id":${id},"zoneId":${zone},"name":"${data.confirmationFields.username}"}`, {
       status: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -42,8 +41,6 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return false
-   } else if (data.success === true) {
     return new Response(`{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
       status: 200,
       headers: {
@@ -57,6 +54,14 @@ async function handleRequest(request) {
   else {
     return new Response(`{"success":false,"message":"Bad Request"}`, {
       status: 400,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+  }
+  catch (error) {
+    return new Response(`{"success":false,"message":"${error}"}`, {
+      status: 500,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       }
