@@ -1,4 +1,4 @@
-name = "valid"
+name = "validator"
 type = "javascript"
 account_id = ""
 workers_dev = true
