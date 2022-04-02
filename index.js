@@ -44,7 +44,7 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(data.confirmationFields.roles, {
+    return new Response(data.confirmationFields.roles.role, {
       status: 200,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
