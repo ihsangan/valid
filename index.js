@@ -51,17 +51,17 @@ async function handleRequest(request) {
       }
     })
   }
-  else {
-    return new Response(`{"success":false,"message":"Bad Request"}`, {
-      status: 400,
+  catch (error) {
+    return new Response(`{"success":false,"message":"${error}"}`, {
+      status: 500,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       }
     })
   }
-  catch (error) {
-    return new Response(`{"success":false,"message":"${error}"}`, {
-      status: 500,
+  else {
+    return new Response(`{"success":false,"message":"Bad Request"}`, {
+      status: 400,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
       }
