@@ -42,7 +42,9 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"nickname":"${data.confirmationFields.roles[0].role}"}`, {
+    return false
+   } else if (data.success === true) {
+    return new Response(`{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
       status: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
