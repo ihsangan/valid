@@ -9,6 +9,7 @@ async function handleRequest(request) {
   const endpoint = 'https://order-sg.codashop.com/initPayment.action'
   const id = params.get('id')
   const srv = params.get('server')
+  const zone = params.get('zone')
   if (path.includes('/ml')) {
     const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
     const request = new Request(endpoint, {
