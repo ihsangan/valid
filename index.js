@@ -53,7 +53,7 @@ async function handleRequest(request) {
     })
   }
   else {
-    return new Response(`{"success":false,"message":"Bad Request"}`, {
+    return new Response(`{"success":false,"message":"Bad request"}`, {
       status: 400,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
@@ -62,7 +62,7 @@ async function handleRequest(request) {
   }
 }
   catch (error) {
-    return new Response(`{"success":false,"message":"${error}"}`, {
+    return new Response(`{"success":false,"message":"Cannot find nickname from your request."}`, {
       status: 500,
       headers: {
         'Content-Type': 'application/json; charset=utf-8'
