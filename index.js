@@ -20,7 +20,7 @@ if (path.includes('/ml')) {
 		body
 	})
 	const response = await fetch(request)
-	const data = response.json()
+	const data = await response.json()
 	return new Response(data, {
 		status: 200,
 		headers: {
