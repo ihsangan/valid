@@ -41,7 +41,7 @@ async function handleRequest(request) {
       },
       body
     })
-    const response = await fetch(request, chc)
+    const response = await fetch(request, { cf: { cacheTtl: 600, cacheEverything: true }})
     const data = await response.json()
     return new Response(`{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
       status: 200,
