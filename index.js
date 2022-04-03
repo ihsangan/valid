@@ -9,6 +9,7 @@ async function handleRequest(request) {
   const id = params.get('id')
   const srv = params.get('server')
   const zone = params.get('zone')
+  const chc = {cf:{cacheTtl:600,cacheEverything:true}}
   try {
   if (path.includes('/ml')) {
     const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
@@ -40,7 +41,7 @@ async function handleRequest(request) {
       },
       body
     })
-    const response = await fetch(request)
+    const response = await fetch(request, chc)
     const data = await response.json()
     return new Response(`{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
       status: 200,
