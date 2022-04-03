@@ -52,7 +52,27 @@ async function handleRequest(request) {
       }
     })
   }
-  else {
+  if (path.includes('/aov')) {
+    const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID`
+    const request = new Request(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body
+    })
+    const response = await fetch(request)
+    const data = await response.json()
+    return new Response(`{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Expose-Headers': '*',
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+  } else {
     return new Response(`{"success":false,"message":"Bad request"}`, {
       status: 400,
       headers: {
@@ -60,8 +80,7 @@ async function handleRequest(request) {
       }
     })
   }
-}
-  catch (error) {
+} catch (error) {
     return new Response(`{"success":false,"message":"Cannot find nickname from your request."}`, {
       status: 500,
       headers: {
