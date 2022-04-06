@@ -117,7 +117,7 @@ async function callapi(request) {
 }
 }
 async function serveResult(request) {
-  let result = callapi(request)
+  let result = await callapi(request)
   let response = new Response(result)
   return response
 }
