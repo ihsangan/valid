@@ -123,7 +123,7 @@ async function serveResult(request) {
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
-  if (result.success === false) {
+  if (result.includes(`"success":false`)) {
     code = 400
   }
   let response = new Response(result, {
