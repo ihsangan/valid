@@ -1,7 +1,7 @@
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
+  event.respondWith(serveResult(event.request))
 })
-async function handleRequest(request) {
+async function callapi(request) {
   const url = new URL(request.url)
   const path = url.pathname
   const params = url.searchParams
@@ -20,15 +20,8 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Genshin Impact","server":"America","id":${id},"name":"${data.confirmationFields.username}"}`, {
-      status: 200,
-      headers: {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'GET',
-	'Access-Control-Expose-Headers': '*',
-	'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+    let result = `{"success":true,"game":"Genshin Impact","server":"America","id":${id},"name":"${data.confirmationFields.username}"}`
+    return result
   }
   if (path.includes('/gi') && id.startsWith('7')) {
     const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_euro&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
@@ -41,15 +34,8 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Genshin Impact","server":"Europe","id":${id},"name":"${data.confirmationFields.username}"}`, {
-      status: 200,
-      headers: {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'GET',
-	'Access-Control-Expose-Headers': '*',
-	'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+    let result = `{"success":true,"game":"Genshin Impact","server":"Europe","id":${id},"name":"${data.confirmationFields.username}"}`
+    return result
   }
     if (path.includes('/gi') && id.startsWith('8')) {
     const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_asia&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
@@ -62,16 +48,9 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Genshin Impact","server":"Asia","id":${id},"name":"${data.confirmationFields.username}"}`, {
-      status: 200,
-      headers: {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'GET',
-	'Access-Control-Expose-Headers': '*',
-	'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
-  }
+    let result = `{"success":true,"game":"Genshin Impact","server":"Asia","id":${id},"name":"${data.confirmationFields.username}"}`
+    return result
+    }
     if (path.includes('/gi') && id.startsWith('9')) {
     const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_cht&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
     const request = new Request(endpoint, {
@@ -83,16 +62,9 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Genshin Impact","server":"SAR (Taiwan, Hong Kong, Macao)","id":${id},"name":"${data.confirmationFields.username}"}`, {
-      status: 200,
-      headers: {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'GET',
-	'Access-Control-Expose-Headers': '*',
-	'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
-  }
+    let result = `{"success":true,"game":"Genshin Impact","server":"SAR (Taiwan, Hong Kong, Macao)","id":${id},"name":"${data.confirmationFields.username}"}`
+    return result
+    }
   if (path.includes('/ml')) {
     const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
     const request = new Request(endpoint, {
@@ -104,15 +76,8 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Mobile Legends: Bang Bang","id":${id},"zoneId":${zone},"name":"${data.confirmationFields.username}"}`, {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Expose-Headers': '*',
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+    let result = `{"success":true,"game":"Mobile Legends: Bang Bang","id":${id},"zoneId":${zone},"name":"${data.confirmationFields.username}"}`
+    return result
   }
   if (path.includes('/ff')) {
     const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID`
@@ -123,17 +88,10 @@ async function handleRequest(request) {
       },
       body
     })
-    const response = await fetch(request, { cf: { cacheTtl: 600, cacheEverything: true }})
+    const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Expose-Headers': '*',
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+    let result = `{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+    return result
   }
   if (path.includes('/aov')) {
     const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID`
@@ -146,30 +104,20 @@ async function handleRequest(request) {
     })
     const response = await fetch(request)
     const data = await response.json()
-    return new Response(`{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`, {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Expose-Headers': '*',
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+    let result = `{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+    return result
   }
   else {
-    return new Response(`{"success":false,"message":"Bad request"}`, {
-      status: 400,
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
+    let result = `{"success":false,"message":"Bad request"}`
+    return result
   }
 } catch (error) {
-    return new Response(`{"success":false,"message":"Cannot find nickname from your request.","error":"${error}"}`, {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      }
-    })
-  }
+    let result = `{"success":false,"message":"Cannot find nickname from your request.","error":"${error}"}`
+    return result
+}
+}
+async function serveResult(request) {
+  let result = callapi(request)
+  let response = new Response(result)
+  return response
 }
