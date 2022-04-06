@@ -117,15 +117,23 @@ async function callapi(request) {
 }
 }
 async function serveResult(request) {
+  let now = Date.now()
+  let code = 200
   let result = await callapi(request)
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
+  if (result.success === false) {
+    code = 400
+  }
   let response = new Response(result, {
+    status: code,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-Timestamp': now,
+      'X-Response-Time': Date.now() - now
     }
   })
   return response
