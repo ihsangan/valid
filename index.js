@@ -112,12 +112,21 @@ async function callapi(request) {
     return result
   }
 } catch (error) {
-    let result = `{"success":false,"message":"Cannot find nickname from your request.","error":"${error}"}`
+    let result = `{"success":false,"message":"Cannot find nickname from your request."}`
     return result
 }
 }
 async function serveResult(request) {
   let result = await callapi(request)
-  let response = new Response(result)
+  if (result.includes('undefined')) {
+    result = `{"success":false,"message":"Cannot find nickname from your request."}`
+  }
+  let response = new Response(result, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET',
+      'Content-Type': 'application/json'
+    }
+  })
   return response
 }
