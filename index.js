@@ -126,6 +126,8 @@ async function serveResult(request) {
   if (result.includes(`"success":false`)) {
     code = 400
   }
+  result = result.replace(/\u002B/g, ' ')
+  result = decodeURIComponent(result)
   let response = new Response(result, {
     status: code,
     headers: {
