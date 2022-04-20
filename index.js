@@ -125,7 +125,7 @@ async function callapi(request) {
 async function serveResult(request) {
   let now = Date.now()
   let code = 200
-  let result = await callapi(request)
+  let { result } = await callapi(request)
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
@@ -143,8 +143,5 @@ async function serveResult(request) {
       'X-Response-Time': Date.now() - now
     }
   })
-  response.headers.delete('NEL')
-  response.headers.delete('Report-To')
-  response.headers.delete('Expect-CT')
   return response
 }
