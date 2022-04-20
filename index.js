@@ -6,11 +6,12 @@ async function callapi(request) {
   const path = url.pathname
   const params = url.searchParams
   const endpoint = 'https://order-sg.codashop.com/initPayment.action'
+  fetch(endpoint)
   const id = params.get('id')
   const zone = params.get('zone')
   try {
   if (!id) {
-    return `{"success":false,"message":"Missing parameters"}`
+    return false
   }
   if (path.includes('/gi') && id.startsWith('6')) {
     const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_usa&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
@@ -68,6 +69,9 @@ async function callapi(request) {
     let result = `{"success":true,"game":"Genshin Impact","server":"SAR (Taiwan, Hong Kong, Macao)","id":${id},"name":"${data.confirmationFields.username}"}`
     return result
     }
+  if (path.includes('/ml') && !zone) {
+    return false
+  }
   if (path.includes('/ml')) {
     const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
     const request = new Request(endpoint, {
