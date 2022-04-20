@@ -125,6 +125,8 @@ async function callapi(request) {
 async function serveResult(request) {
   let now = Date.now()
   let code = 200
+  let ip = request.headers.get('CF-Connecting-IP')
+  let id = btoa(`${now} ${ip}`)
   let result = await callapi(request)
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
@@ -140,6 +142,7 @@ async function serveResult(request) {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET',
       'Content-Type': 'application/json; charset=utf-8',
+      'X-Request-ID': id,
       'X-Response-Time': Date.now() - now
     }
   })
