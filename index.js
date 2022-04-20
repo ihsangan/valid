@@ -9,6 +9,9 @@ async function callapi(request) {
   const id = params.get('id')
   const zone = params.get('zone')
   try {
+  if (!id) {
+    return `{"success":false,"message":"Missing parameters"}`
+  }
   if (path.includes('/gi') && id.startsWith('6')) {
     const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_usa&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
     const request = new Request(endpoint, {
@@ -133,8 +136,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET',
-      'Content-Type': 'application/json',
-      'X-Timestamp': now,
+      'Content-Type': 'application/json; charset=utf-8',
       'X-Response-Time': Date.now() - now
     }
   })
