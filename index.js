@@ -143,5 +143,8 @@ async function serveResult(request) {
       'X-Response-Time': Date.now() - now
     }
   })
+  response.headers.delete('NEL')
+  response.headers.delete('Report-To')
+  response.headers.delete('Expect-CT')
   return response
 }
