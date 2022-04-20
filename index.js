@@ -11,7 +11,7 @@ async function callapi(request) {
   const zone = params.get('zone')
   try {
   if (!id) {
-    return false
+    return `{"success":false,"message":"Missing id parameter"}`
   }
   if (path.includes('/gi') && id.startsWith('6')) {
     const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_usa&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
@@ -70,7 +70,7 @@ async function callapi(request) {
     return result
     }
   if (path.includes('/ml') && !zone) {
-    return false
+    return `{"success":false,"message":"Missing zone parameter"}`
   }
   if (path.includes('/ml')) {
     const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
