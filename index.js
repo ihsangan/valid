@@ -124,7 +124,7 @@ async function callapi(request) {
 }
 function generateId() {
 	let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-	let lenght = 16
+	let lenght = 24
 	let id = ''
 	for (let x = 0; x < lenght; x++) {
 		let i = Math.floor(Math.random() * chars.length);
