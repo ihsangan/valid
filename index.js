@@ -145,7 +145,7 @@ async function serveResult(request) {
   }
   result = result.replace(/\u002B/g, ' ')
   result = decodeURIComponent(result)
-  let response = new Response(JSON.stringify(result, null, 2), {
+  let response = new Response(result, {
     status: code,
     headers: {
       'Access-Control-Allow-Origin': '*',
