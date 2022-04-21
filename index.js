@@ -122,11 +122,21 @@ async function callapi(request) {
     return result
 }
 }
+function generateId() {
+	let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+	let leght = 16
+	for (let i = 0; i < leght; i++) {
+		let rnum = Math.floor(Math.random() * chars.length);
+		let char = chars.substring(rnum, rnum + 1);
+		id += char;
+	}
+	return id
+}
 async function serveResult(request) {
   let now = Date.now()
   let code = 200
   let ip = request.headers.get('CF-Connecting-IP')
-  let id = btoa(`${now} ${ip}`)
+  let id = generateId()
   let result = await callapi(request)
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
