@@ -124,19 +124,18 @@ async function callapi(request) {
 }
 function generateId() {
 	let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-	let leght = 16
-	for (let i = 0; i < leght; i++) {
-		let rnum = Math.floor(Math.random() * chars.length);
-		let char = chars.substring(rnum, rnum + 1);
-		id += char;
+	let lenght = 16
+	let id = ''
+	for (let x = 0; x < lenght; x++) {
+		let i = Math.floor(Math.random() * chars.length);
+		id += chars.charAt(i);
 	}
 	return id
 }
 async function serveResult(request) {
   let now = Date.now()
   let code = 200
-  let ip = request.headers.get('CF-Connecting-IP')
-  let id = generateId()
+  let id = await generateId()
   let result = await callapi(request)
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
