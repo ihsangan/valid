@@ -128,7 +128,7 @@ async function callapi(request) {
 }
 function generateId() {
 	let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-	let lenght = 24
+	let lenght = 16
 	let id = ''
 	for (let x = 0; x < lenght; x++) {
 		let i = Math.floor(Math.random() * chars.length);
@@ -154,7 +154,7 @@ async function serveResult(request) {
     "ip": request.headers.get('CF-Connecting-IP'),
     "result": result
   }
-  await LOG.put(id, JSON.stringify(logData, null, 2))
+  await LOG.put(id, JSON.stringify(logData), {expirationTtl: 172800})
   let response = new Response(result, {
     status: code,
     headers: {
