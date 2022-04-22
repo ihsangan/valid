@@ -113,6 +113,10 @@ async function callapi(request) {
     let result = `{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
     return result
   }
+  if (path.includes('/log') {
+     let result = await LOG.get(id)
+     return result
+  }
   else {
     let result = `{"success":false,"message":"Bad request"}`
     return result
@@ -145,6 +149,12 @@ async function serveResult(request) {
   }
   result = result.replace(/\u002B/g, ' ')
   result = decodeURIComponent(result)
+  let logData = {
+    "id": id,                                                         "timestamp": now,
+    "ip": request.headers.get('CF-Connecting-IP'),
+    "result": result
+  }
+  await LOG.put(id, JSON.stringify(logData, null, 2))
   let response = new Response(result, {
     status: code,
     headers: {
