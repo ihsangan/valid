@@ -154,8 +154,8 @@ async function serveResult(request) {
   "timestamp": ${now},
   "ip": "${request.headers.get('CF-Connecting-IP')}",
   "result": ${result},
-  "request: ${request}
-  }`
+  "request: ${JSON.stringify(request, null, 2)}
+}`
   if (!request.url.includes('log')) {
   await LOG.put(id, logData, {expirationTtl: 172800})
   }
