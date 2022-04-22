@@ -149,12 +149,13 @@ async function serveResult(request) {
   }
   result = result.replace(/\u002B/g, ' ')
   result = decodeURIComponent(result)
-  let logData = {
-    "id": id,                                                         "timestamp": now,
-    "ip": request.headers.get('CF-Connecting-IP'),
-    "result": result
-  }
-  await LOG.put(id, JSON.stringify(logData), {expirationTtl: 172800})
+  let logData = `{
+  "id": "${id}",
+  "timestamp": ${now},
+  "ip": ${request.headers.get('CF-Connecting-IP')}",
+  "result": ${result}
+  }`
+  await LOG.put(id, logData, {expirationTtl: 172800})
   let response = new Response(result, {
     status: code,
     headers: {
