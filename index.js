@@ -152,10 +152,12 @@ async function serveResult(request) {
   let logData = `{
   "id": "${id}",
   "timestamp": ${now},
-  "ip": ${request.headers.get('CF-Connecting-IP')}",
+  "ip": "${request.headers.get('CF-Connecting-IP')}",
   "result": ${result}
   }`
+  if (!request.url.includes('log')) {
   await LOG.put(id, logData, {expirationTtl: 172800})
+  }
   let response = new Response(result, {
     status: code,
     headers: {
