@@ -113,7 +113,7 @@ async function callapi(request) {
     let result = `{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
     return result
   }
-  if (path.includes('/log') {
+  if (path.includes('/log')) {
      let result = await LOG.get(id)
      return result
   }
