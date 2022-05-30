@@ -164,6 +164,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET',
+      'Cache-Control': 'public, max-age=600',
       'Content-Type': 'application/json; charset=utf-8',
       'X-Request-ID': id,
       'X-Response-Time': Date.now() - now
