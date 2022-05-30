@@ -145,6 +145,7 @@ async function serveResult(request) {
   if (!response) {
   let result = await callapi(request)
   }
+  let result = response.body
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
@@ -163,6 +164,7 @@ async function serveResult(request) {
   if (!request.url.includes('log')) {
   await LOG.put(id, logData, {expirationTtl: 172800})
   }
+  if (!response) {
   let response = new Response(result, {
     status: code,
     headers: {
@@ -174,6 +176,7 @@ async function serveResult(request) {
       'X-Response-Time': Date.now() - now
     }
   })
+ }
   await cache.put(request, response)
   return response
 }
