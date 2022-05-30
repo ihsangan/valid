@@ -72,7 +72,7 @@ async function callapi(request) {
     return `{"success":false,"message":"Bad Request"}`
   }
   if (path.includes('/ml')) {
-    const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1565.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
+    const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
     const request = new Request(endpoint, {
       method: 'POST',
       headers: {
@@ -137,6 +137,9 @@ function generateId() {
 	return id
 }
 async function serveResult(request) {
+  let cache = caches.default
+  let response = await cache.match(request)
+  if (!response){
   let now = Date.now()
   let code = 200
   let id = await generateId()
@@ -170,5 +173,7 @@ async function serveResult(request) {
       'X-Response-Time': Date.now() - now
     }
   })
+  await cache.put(request, response)
+  }
   return response
 }
