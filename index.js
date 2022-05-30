@@ -138,12 +138,13 @@ function generateId() {
 }
 async function serveResult(request) {
   let cache = caches.default
-  let response = await cache.match(request)
-  if (!response){
   let now = Date.now()
   let code = 200
   let id = await generateId()
+  let response = await cache.match(request)
+  if (!response){
   let result = await callapi(request)
+  }
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
@@ -174,6 +175,5 @@ async function serveResult(request) {
     }
   })
   await cache.put(request, response)
-  }
   return response
 }
