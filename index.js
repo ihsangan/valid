@@ -113,10 +113,6 @@ async function callAPI(request) {
     let result = `{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
     return result
   }
-  if (path.includes('/log')) {
-     let result = await LOG.get(id)
-     return result
-  }
   else {
     let result = `{"success":false,"message":"Bad request"}`
     return result
@@ -124,22 +120,11 @@ async function callAPI(request) {
 } catch (error) {
     let result = `{"success":false,"message":"Cannot find nickname from your request."}`
     return result
-}
-}
-function generateId() {
-	let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
-	let lenght = 16
-	let id = ''
-	for (let x = 0; x < lenght; x++) {
-		let i = Math.floor(Math.random() * chars.length);
-		id += chars.charAt(i);
-	}
-	return id
+  }
 }
 async function serveResult(request) {
   let now = Date.now()
   let code = 200
-  let id = await generateId()
   let result = await callAPI(request)
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
@@ -149,35 +134,23 @@ async function serveResult(request) {
   }
   result = result.replace(/\u002B/g, ' ')
   result = decodeURIComponent(result)
-  let logData = `{
-  "id": "${id}",
-  "timestamp": ${now},
-  "ip": "${request.headers.get('CF-Connecting-IP')}",
-  "result": ${result},
-  "request: ${JSON.stringify(request, null, 2)}
-}`
-  if (!request.url.includes('log')) {
-  await LOG.put(id, logData, {expirationTtl: 172800})
-  }
   let response = new Response(result, {
     status: code,
     headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET',
       'Cache-Control': 'public, max-age=600',
       'Content-Type': 'application/json; charset=utf-8',
-      'X-Request-ID': id,
-      'X-Response-Time': Date.now() - now
     }
   })
   return response
 }
 async function checkCache(request) {
+  let now = Date.now()
   let cache = caches.default
   let response = await cache.match(request)
   if (!response) {
     response = await serveResult(request)
     await cache.put(request, response.clone())
   }
+  response.headers.append('X-Response-Time', Date.now() - now)
   return response
 }
