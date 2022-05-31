@@ -146,10 +146,10 @@ async function serveResult(request) {
 async function checkCache(request) {
   let now = Date.now()
   let cache = caches.default
-  let response = await cache.match(request)
+  let response = await cache.match(request.url)
   if (!response) {
     response = await serveResult(request)
-    await cache.put(request, response.clone())
+    await cache.put(request.url, response.clone())
   }
   response = new Response(response.body, response)
   response.headers.append('X-Response-Time', Date.now() - now)
