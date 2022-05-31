@@ -151,6 +151,7 @@ async function checkCache(request) {
     response = await serveResult(request)
     await cache.put(request, response.clone())
   }
+  response = new Response(response.body, response)
   response.headers.append('X-Response-Time', Date.now() - now)
   return response
 }
