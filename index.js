@@ -179,5 +179,5 @@ async function checkCache(request) {
     response = await serveResult(request)
     await cache.put(request, response)
   }
-  return Response
+  return response
 }
