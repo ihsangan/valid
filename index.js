@@ -144,6 +144,9 @@ async function serveResult(request) {
   return response
 }
 async function checkCache(request) {
+  if (request.method !== 'GET') {
+    return new Response('', { status: 405 })
+  }
   let now = Date.now()
   let cache = caches.default
   let response = await cache.match(request.url)
