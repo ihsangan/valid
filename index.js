@@ -1,7 +1,7 @@
 addEventListener('fetch', event => {
-  event.respondWith(serveResult(event.request))
+  event.respondWith(checkCache(event.request))
 })
-async function callapi(request) {
+async function callAPI(request) {
   const url = new URL(request.url)
   const path = url.pathname
   const params = url.searchParams
@@ -137,14 +137,10 @@ function generateId() {
 	return id
 }
 async function serveResult(request) {
-  let cache = caches.default
   let now = Date.now()
   let code = 200
   let id = await generateId()
-  let response = await cache.match(request)
-  if (!response) {
-  let result = await callapi(request)
-  }
+  let result = await callAPI(request)
   let result = response.body
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
@@ -164,7 +160,6 @@ async function serveResult(request) {
   if (!request.url.includes('log')) {
   await LOG.put(id, logData, {expirationTtl: 172800})
   }
-  if (!response) {
   let response = new Response(result, {
     status: code,
     headers: {
@@ -176,7 +171,14 @@ async function serveResult(request) {
       'X-Response-Time': Date.now() - now
     }
   })
- }
-  await cache.put(request, response)
   return response
+}
+async function checkCache(request) {
+  let cache = caches.default
+  let response = await cache.match(request)
+  if (!response) {
+    response = await serveResult(request)
+    await cache.put(request, result)
+  }
+  return Response
 }
