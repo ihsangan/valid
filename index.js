@@ -177,7 +177,7 @@ async function checkCache(request) {
   let response = await cache.match(request)
   if (!response) {
     response = await serveResult(request)
-    await cache.put(request, response)
+    await cache.put(request, response.clone())
   }
   return response
 }
