@@ -141,7 +141,6 @@ async function serveResult(request) {
   let code = 200
   let id = await generateId()
   let result = await callAPI(request)
-  let result = response.body
   if (result.includes('undefined')) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
