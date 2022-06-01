@@ -137,7 +137,7 @@ async function serveResult(request) {
   let response = new Response(result, {
     status: code,
     headers: {
-      // 'Cache-Control': 'max-age=600',
+      'Cache-Control': 'max-age=600',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
@@ -157,7 +157,7 @@ async function checkCache(request) {
     await cache.put(request.url, response.clone())
   }
   response = new Response(response.body, response)
-  // response.headers.delete('Cache-Control')
+  response.headers.delete('Cache-Control')
   response.headers.append('X-Response-Time', Date.now() - now)
   return response
 }
