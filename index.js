@@ -124,7 +124,6 @@ async function callAPI(request) {
   }
 }
 async function serveResult(request) {
-  let now = Date.now()
   let code = 200
   let result = await callAPI(request)
   if (result.includes('undefined')) {
@@ -146,7 +145,7 @@ async function serveResult(request) {
 }
 async function checkCache(request) {
   if (request.method !== 'GET') {
-    return new Response(`{"success":false,"message":"Method not allowed"}`, {
+    return new Response('Method Not Allowed', {
       status: 405
     })
   }
