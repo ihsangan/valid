@@ -137,7 +137,7 @@ async function serveResult(request) {
   let response = new Response(result, {
     status: code,
     headers: {
-      'Cache-Control': 'public, max-age=600',
+      'CDN-Cache-Control': 'public, max-age=600',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
