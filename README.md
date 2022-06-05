@@ -29,7 +29,7 @@ GET `gi?id=PLAYER_ID`
 **Contoh:** https://api.isan.eu.org/nickname/gi?id=600000000
 ## ID-REG-ONLY
 Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terdaftar dari region Indonesia
-##### Mobile Legends: Bang Bang
+#### Mobile Legends: Bang Bang
 GET `ml?id=PLAYER_ID&zone=ZONE_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/ml?id=1114917746&zone=13486
