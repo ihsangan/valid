@@ -5,7 +5,7 @@ Awal bermula nya poject ini saat saya mengunjungi web phising yang menggunakan s
 
 Karena dari CodaShop request dan parsing data nya lebih ribet, maka dibuatlah API ini.
 ## Endpoint
-```sh
+```
 https://api.isan.eu.org/nickname/
 ```
 ## Output
@@ -27,6 +27,10 @@ Berikut adalah daftar game yang didukung oleh API ini.
 GET `gi?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/gi?id=600000000
+#### Sausage Man
+GET `sm?id=PLAYER_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/sm?id=5sn9jf
 ## ID-REG-ONLY
 Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terdaftar dari region Indonesia
 #### Mobile Legends: Bang Bang
@@ -41,5 +45,9 @@ GET `ff?id=PLAYER_ID`
 GET `aov?id=PLAYER_OR_OPEN_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/aov?id=124590895269021
+#### Call Of Duty
+GET `cod?id=PLAYER_OR_OPEN_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/cod?id=243402956362890880
 # Copyright
 © Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
