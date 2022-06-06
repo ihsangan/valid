@@ -72,7 +72,7 @@ async function callAPI(request) {
       return `{"success":false,"message":"Bad Request"}`
     }
     if (path.includes('/ml')) {
-      const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&msisdn=&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
+      const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -83,6 +83,20 @@ async function callAPI(request) {
       const response = await fetch(request)
       const data = await response.json()
       let result = `{"success":true,"game":"Mobile Legends: Bang Bang","id":${id},"zoneId":${zone},"name":"${data.confirmationFields.username}"}`
+      return result
+    }
+    if (path.includes('/sm')) {
+      const body = `voucherPricePoint.id=256513&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=global-release&voucherTypeName=SAUSAGE_MAN&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      let result = `{"success":true,"game":"Sausage Man","id":${id},"name":"${data.confirmationFields.username}"}`
       return result
     }
     if (path.includes('/ff')) {
@@ -99,6 +113,20 @@ async function callAPI(request) {
       let result = `{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
       return result
     }
+    if (path.includes('/cod')) {
+      const body = `voucherPricePoint.id=46114&voucherPricePoint.price=5000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      let result = `{"success":true,"game":"Call Of Duty","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+      return result
+    }
     if (path.includes('/aov')) {
       const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID`
       const request = new Request(endpoint, {
@@ -110,7 +138,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      let result = `{"success":true,"game":"Garena AOV (Arena Of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+      let result = `{"success":true,"game":"Garena AOV (Arena of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
       return result
     }
     else {
