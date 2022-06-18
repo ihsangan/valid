@@ -96,7 +96,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      let result = `{"success":true,"game":"Sausage Man","id":${id},"name":"${data.confirmationFields.username}"}`
+      let result = `{"success":true,"game":"Sausage Man","id":"${id}","name":"${data.confirmationFields.username}"}`
       return result
     }
     if (path.includes('/ff')) {
