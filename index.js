@@ -165,6 +165,8 @@ async function serveResult(request) {
   let response = new Response(result, {
     status: code,
     headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Method': 'GET',
       'Cache-Control': 'max-age=600',
       'Content-Type': 'application/json; charset=utf-8',
     }
