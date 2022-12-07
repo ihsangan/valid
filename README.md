@@ -12,10 +12,10 @@ https://api.isan.eu.org/nickname/
 application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html/rfc4627))
 ```json
 {
-  "success": boolean,
+  "success": "boolean",
   "game": "string",
-  "id": number,
-  "zoneId": number,
+  "id": "number",
+  "zoneId": "number",
   "server": "string",
   "name": "string",
   "message": "string"
@@ -23,7 +23,7 @@ application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html
 ```
 ## Daftar game
 Berikut adalah daftar game yang didukung oleh API ini.
-#### Genshin Impact (America, Asia, Europe, SAR)
+#### Genshin Impact (America, Asia, Europe, SAR) [DEPRECATED]
 GET `gi?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/gi?id=600000000
