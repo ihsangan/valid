@@ -72,7 +72,7 @@ async function callAPI(request) {
       return `{"success":false,"message":"Bad Request"}`
     }
     if (path.includes('/ml')) {
-      const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
+      const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -100,7 +100,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/ff')) {
-      const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID`
+      const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -114,7 +114,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/cod')) {
-      const body = `voucherPricePoint.id=46114&voucherPricePoint.price=5000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY&shopLang=id_ID`
+      const body = `voucherPricePoint.id=46114&voucherPricePoint.price=5000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -128,7 +128,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/aov')) {
-      const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID`
+      const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
