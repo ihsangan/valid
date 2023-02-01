@@ -68,6 +68,20 @@ async function callAPI(request) {
       let result = `{"success":true,"game":"Genshin Impact","server":"SAR (Taiwan, Hong Kong, Macao)","id":${id},"name":"${data.confirmationFields.username}"}`
       return result
     }
+        if (path.includes('/hi') {
+      const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      let result = `{"success":true,"game":"Honkai Impact 3rd","id":${id},"name":"${data.confirmationFields.username}"}`
+      return result
+    }
     if (path.includes('/ml') && !zone) {
       return `{"success":false,"message":"Bad Request"}`
     }
