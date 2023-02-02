@@ -23,14 +23,22 @@ application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html
 ```
 ## Daftar game
 Berikut adalah daftar game yang didukung oleh API ini.
-#### Genshin Impact (America, Asia, Europe, SAR) [DEPRECATED]
+#### Genshin Impact (America, Asia, Europe, SAR) [CENSORED]
 GET `gi?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/gi?id=600000000
+#### Honkai Impact 3rd [CENSORED]
+GET `hi?id=PLAYER_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/hi?id=10009897
 #### Sausage Man
 GET `sm?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/sm?id=5sn9jf
+#### Super Sus
+GET `sus?id=SPACE_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/sus?id=15916600
 ## ID-REG-ONLY
 Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terdaftar dari region Indonesia
 #### Mobile Legends: Bang Bang
@@ -49,5 +57,9 @@ GET `aov?id=PLAYER_OR_OPEN_ID`
 GET `cod?id=PLAYER_OR_OPEN_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/cod?id=243402956362890880
+#### Higgs Domino Island
+GET `hdi?id=PLAYER_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/hdi?id=4700000
 # Copyright
 © Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
