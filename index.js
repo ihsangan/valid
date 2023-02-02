@@ -169,6 +169,20 @@ async function callAPI(request) {
       let result = `{"success":true,"game":"Higgs Domino Island","id":${id},"name":"${data.confirmationFields.username}"}`
       return result
     }
+    if (path.includes('/sus')) {
+      const body = `voucherPricePoint.id=266077&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=SUPER_SUS&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      let result = `{"success":true,"game":"Super Sus","id":${id},"name":"${data.confirmationFields.username}"}`
+      return result
+    }
     else {
       let result = `{"success":false,"message":"Bad request"}`
       return result
