@@ -13,7 +13,7 @@ async function callAPI(request) {
       return `{"success":false,"message":"Bad Request"}`
     }
     if (path.includes('/gi') && id.startsWith('6')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_usa&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_usa&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -27,7 +27,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/gi') && id.startsWith('7')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_euro&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_euro&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -41,7 +41,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/gi') && id.startsWith('8')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_asia&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_asia&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -55,7 +55,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/gi') && id.startsWith('9')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_cht&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_cht&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
