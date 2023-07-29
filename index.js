@@ -69,7 +69,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/hi')) {
-      const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
