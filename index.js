@@ -23,7 +23,7 @@ async function callAPI(request) {
         const sn = 'Asia'
         const sv = 'os_asia'
       } if (id.startsWith('9')) {
-        const sn 'SAR (Taiwan, Hong Kong, Macao)'
+        const sn = 'SAR (Taiwan, Hong Kong, Macao)'
         const sv = 'os_cht'
       } else {
         return `{"success":false,"message":"Bad request"}`
