@@ -1,8 +1,5 @@
 name = "validator"
 type = "javascript"
-account_id = ""
+account_id = "d0e945170bff262977439f6161f88353"
 workers_dev = true
-kv_namespaces = [ { binding = "LOG", id ="c098f3c6556b471ca231e0e61e834f32" } ]
-route = ""
-zone_id = ""
 compatibility_date = "2022-01-01"
