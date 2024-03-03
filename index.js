@@ -13,8 +13,6 @@ async function callAPI(request) {
       return `{"success":false,"message":"Bad Request"}`
     }
     if (path.includes('/gi')) {
-      let sn 
-      let sv 
       if (id. startsWith('6')) {
         sn = 'America'
         sv = 'os_usa'
