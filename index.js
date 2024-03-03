@@ -12,21 +12,21 @@ async function callAPI(request) {
     if (!id) {
       return `{"success":false,"message":"Bad Request"}`
     }
-    if (path.includes('/gi') {
+    if (path.includes('/gi')) {
       let sn = ;
       let sv = ;
       if (id. startsWith('6')) {
-        const sn = 'America'
-        const sv = 'os_usa'
+        sn = 'America'
+        sv = 'os_usa'
       } if (id.startsWith('7')) {
-        const sn = 'Europe'
-        const sv = 'os_euro'
+        sn = 'Europe'
+        sv = 'os_euro'
       } if (id.startsWith('8')) {
-        const sn = 'Asia'
-        const sv = 'os_asia'
+        sn = 'Asia'
+        sv = 'os_asia'
       } if (id.startsWith('9')) {
-        const sn = 'SAR (Taiwan, Hong Kong, Macao)'
-        const sv = 'os_cht'
+        sn = 'SAR (Taiwan, Hong Kong, Macao)'
+        sv = 'os_cht'
       } else {
         return `{"success":false,"message":"Bad request"}`
       }
