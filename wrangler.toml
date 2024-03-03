@@ -1,5 +1,3 @@
 name = "validator"
-type = "javascript"
-account_id = "d0e945170bff262977439f6161f88353"
 workers_dev = true
 compatibility_date = "2022-01-01"
