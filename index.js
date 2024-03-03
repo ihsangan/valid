@@ -18,13 +18,13 @@ async function callAPI(request) {
       if (id. startsWith('6')) {
         sn = 'America'
         sv = 'os_usa'
-      } if (id.startsWith('7')) {
+      } else if (id.startsWith('7')) {
         sn = 'Europe'
         sv = 'os_euro'
-      } if (id.startsWith('8')) {
+      } else if (id.startsWith('8')) {
         sn = 'Asia'
         sv = 'os_asia'
-      } if (id.startsWith('9')) {
+      } else if (id.startsWith('9')) {
         sn = 'SAR (Taiwan, Hong Kong, Macao)'
         sv = 'os_cht'
       } else {
