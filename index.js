@@ -12,7 +12,9 @@ async function callAPI(request) {
     if (!id) {
       return `{"success":false,"message":"Bad Request"}`
     }
-    if (path.includes('/gi') && id.startsWith('6')) {
+    if (path.includes('/gi') {
+      let sn = ;
+      let sv = ;
       if (id. startsWith('6')) {
         const sn = 'America'
         const sv = 'os_usa'
