@@ -12,6 +12,35 @@ async function callAPI(request) {
     if (!id) {
       return `{"success":false,"message":"Bad Request"}`
     }
+    if (path.includes('/hsr')) {
+      if (id. startsWith('6')) {
+        sn = 'America'
+        sv = 'prod_official_usa'
+      } else if (id.startsWith('7')) {
+        sn = 'Europe'
+        sv = 'prod_official_eur'
+      } else if (id.startsWith('8')) {
+        sn = 'Asia'
+        sv = 'prod_official_asia'
+      } else if (id.startsWith('9')) {
+        sn = 'SAR (Taiwan, Hong Kong, Macao)'
+        sv = 'prod_official_cht'
+      } else {
+        return `{"success":false,"message":"Bad request"}`
+      }
+      const body = `voucherPricePoint.id=855316&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=HONKAI_STAR_RAIL&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      let result = `{"success":true,"game":"Honkai: Star Rail","server":"${sn}","id":${id},"name":"${data.confirmationFields.username}"}`
+      return result
+    }
     if (path.includes('/gi')) {
       if (id. startsWith('6')) {
         sn = 'America'
