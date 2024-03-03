@@ -4,6 +4,9 @@ API ini dibuat untuk mencari nickname in-game menggunakan ID player, data dari A
 Awal bermula nya projek ini saat saya mengunjungi web phising yang menggunakan sistem validasi ID pada situsnya (ironis, padahal masih bayak web topup yang belum implementasi beginian), jadi kalo ID nya tidak valid maka data tidak bisa disubmit.
 
 Karena dari Codashop request dan parsing data nya lebih ribet, maka dibuatlah API ini.
+## Self Deploy
+Kamu bisa langsung fork aja repo ini, atau bisa tekan tombol dibawah ini (jangan lupa github secrets nya di seting)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ihsangan/valid)
 ## Endpoint
 ```
 https://api.isan.eu.org/nickname/
