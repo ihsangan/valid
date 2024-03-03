@@ -1,21 +1,21 @@
 # Nickname Validator
-API ini dibuat untuk mencari nickname in-game menggunakan ID player, data dari API ini diambil dari [CodaShop](https://www.codashop.com/).
+API ini dibuat untuk mencari nickname in-game menggunakan ID player, data dari API ini diambil dari [Codashop](https://www.codashop.com/).
 
-Awal bermula nya poject ini saat saya mengunjungi web phising yang menggunakan sistem validasi ID pada situsnya, jadi kalo ID nya tidak valid maka data tidak bisa disubmit.
+Awal bermula nya projek ini saat saya mengunjungi web phising yang menggunakan sistem validasi ID pada situsnya (ironis, padahal masih bayak web topup yang belum implementasi beginian), jadi kalo ID nya tidak valid maka data tidak bisa disubmit.
 
-Karena dari CodaShop request dan parsing data nya lebih ribet, maka dibuatlah API ini.
+Karena dari Codashop request dan parsing data nya lebih ribet, maka dibuatlah API ini.
 ## Endpoint
 ```
 https://api.isan.eu.org/nickname/
 ```
 ## Output
 application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html/rfc4627))
-```json
+```
 {
-  "success": "boolean",
+  "success": boolean,
   "game": "string",
-  "id": "number",
-  "zoneId": "number",
+  "id": number/"string",
+  "zoneId": number,
   "server": "string",
   "name": "string",
   "message": "string"
@@ -27,10 +27,14 @@ Berikut adalah daftar game yang didukung oleh API ini.
 GET `gi?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/gi?id=600000000
+#### Honkai: Star Rail (America, Asia, Europe, SAR) [CENSORED]
+GET `hsr?id=PLAYER_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/hsr?id=600000001
 #### Honkai Impact 3rd [CENSORED]
 GET `hi?id=PLAYER_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/hi?id=10009897
+**Contoh:** https://api.isan.eu.org/nickname/hi?id=10000001
 #### Sausage Man
 GET `sm?id=PLAYER_ID`
 
@@ -63,3 +67,4 @@ GET `hdi?id=PLAYER_ID`
 **Contoh:** https://api.isan.eu.org/nickname/hdi?id=4700000
 # Copyright
 © Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+Tidak terafiliasi dengan Codashop
