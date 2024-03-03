@@ -13,7 +13,22 @@ async function callAPI(request) {
       return `{"success":false,"message":"Bad Request"}`
     }
     if (path.includes('/gi') && id.startsWith('6')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_usa&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
+      if (id. startsWith('6')) {
+        const sn = 'America'
+        const sv = 'os_usa'
+      } if (id.startsWith('7')) {
+        const sn = 'Europe'
+        const sv = 'os_euro'
+      } if (id.startsWith('8')) {
+        const sn = 'Asia'
+        const sv = 'os_asia'
+      } if (id.startsWith('9')) {
+        const sn 'SAR (Taiwan, Hong Kong, Macao)'
+        const sv = 'os_cht'
+      } else {
+        return `{"success":false,"message":"Bad request"}`
+      }
+      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -23,49 +38,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      let result = `{"success":true,"game":"Genshin Impact","server":"America","id":${id},"name":"${data.confirmationFields.username}"}`
-      return result
-    }
-    if (path.includes('/gi') && id.startsWith('7')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_euro&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
-      const request = new Request(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body
-      })
-      const response = await fetch(request)
-      const data = await response.json()
-      let result = `{"success":true,"game":"Genshin Impact","server":"Europe","id":${id},"name":"${data.confirmationFields.username}"}`
-      return result
-    }
-    if (path.includes('/gi') && id.startsWith('8')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_asia&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
-      const request = new Request(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body
-      })
-      const response = await fetch(request)
-      const data = await response.json()
-      let result = `{"success":true,"game":"Genshin Impact","server":"Asia","id":${id},"name":"${data.confirmationFields.username}"}`
-      return result
-    }
-    if (path.includes('/gi') && id.startsWith('9')) {
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=os_cht&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
-      const request = new Request(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body
-      })
-      const response = await fetch(request)
-      const data = await response.json()
-      let result = `{"success":true,"game":"Genshin Impact","server":"SAR (Taiwan, Hong Kong, Macao)","id":${id},"name":"${data.confirmationFields.username}"}`
+      let result = `{"success":true,"game":"Genshin Impact","server":"${sn}","id":${id},"name":"${data.confirmationFields.username}"}`
       return result
     }
     if (path.includes('/hi')) {
