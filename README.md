@@ -65,9 +65,5 @@ GET `aov?id=PLAYER_OR_OPEN_ID`
 GET `cod?id=PLAYER_OR_OPEN_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/cod?id=243402956362890880
-### Higgs Domino Island
-GET `hdi?id=PLAYER_ID`
-
-**Contoh:** https://api.isan.eu.org/nickname/hdi?id=4700000
 # Copyright
 © Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), tidak terafiliasi dengan Codashop
