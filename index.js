@@ -158,7 +158,7 @@ async function callAPI(request) {
       return result
     }
     if (path.includes('/sus')) {
-      const body = `voucherPricePoint.id=266077&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=SUPER_SUS&shopLang=id_ID`
+      const body = `voucherPricePoint.id=266077&voucherPricePoint.price=13000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=SUPER_SUS&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
