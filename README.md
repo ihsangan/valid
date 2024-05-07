@@ -65,5 +65,17 @@ GET `aov?id=PLAYER_OR_OPEN_ID`
 GET `cod?id=PLAYER_OR_OPEN_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/cod?id=243402956362890880
+## Parameter Opsional
+Kamu dapat menambah parameter `decode` dan mengisi value ke `false` (default ke `true`).
+
+Ketika value diatur ke `false` maka data nickname akan ditampilkan dala URL encoded dan untuk membacanya memerlukan function seperti `decodeURIComponent()` (dalam javascript) atau sejenisnya, saya juga lebih merekomendasikan untuk menggunakan `?decode=false`.
+
+Sementara jika value adalah `true` maka data akan bisa dibaca secara langsung tapi kemungkinan error dan gagal dalam pembacaan data akan muncul.
+
+Berikut adalah contoh penggunaan `?decode=false`
+https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=false
+
+Contoh penggunaan `?decode=true`
+https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=true atau https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044 (sama saja).
 # Copyright
 © Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), tidak terafiliasi dengan Codashop
