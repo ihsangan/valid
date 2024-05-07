@@ -182,16 +182,22 @@ async function callAPI(request) {
   }
 }
 async function serveResult(request) {
+  let dc = new URL(request.url).searchParams.get('decode')
   let code = 200
   let result = await callAPI(request)
-  if (result.includes('undefined')) {
+  if (JSON.parse(result).name == undefined) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
-  if (result.includes(`"success":false`)) {
+  if (JSON.parse(result).success == false) {
     code = 400
   }
   result = result.replace(/\u002B/g, ' ')
-  result = decodeURIComponent(result)
+  if (dc == false) {
+    result = result
+  }
+  if (!dc || dc == true || dc) {
+    result = decodeURIComponent(result)
+  }
   let response = new Response(result, {
     status: code,
     headers: {
