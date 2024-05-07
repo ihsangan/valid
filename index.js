@@ -195,7 +195,7 @@ async function serveResult(request) {
   if (dc == false) {
     result = result
   }
-  if (!dc || dc == true) {
+  if (!dc || dc == true || dc) {
     result = decodeURIComponent(result)
   }
   let response = new Response(result, {
