@@ -47,6 +47,12 @@ GET `sm?id=PLAYER_ID`
 GET `sus?id=SPACE_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/sus?id=15916600
+### Valorant
+GET `valo?id=URLEncodedRiotIdAndTag`
+
+**Contoh region ID :** https://api.isan.eu.org/nickname/valo?id=yuyun%23123
+
+**Contoh region non ID :** https://api.isan.eu.org/nickname/valo?id=Westbourne%23USA
 ## ID-REG-ONLY
 Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terdaftar dari region Indonesia
 ### Mobile Legends: Bang Bang

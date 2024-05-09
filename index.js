@@ -115,6 +115,28 @@ async function callAPI(request) {
       let result = `{"success":true,"game":"Sausage Man","id":"${id}","name":"${data.confirmationFields.username}"}`
       return result
     }
+    if (path.includes('/valo')) {
+      const body = `voucherPricePoint.id=115691&voucherPricePoint.price=15000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=VALORANT&voucherTypeId=109&gvtId=139&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      if (data.success == true) {
+        let result = `{"success":true,"game":"VALORANT","id":"${id}","region": "Indonesia","name":"${data.confirmationFields.username}"}`
+        return result
+      } else if (data.errorCode == -200) {
+        let result = `{"success":true,"game":"VALORANT","id":"${id}","region": "unknown","name":"${data.confirmationFields.userId}"}`
+        return result
+      } else {
+        let result = `{"success":false,"message":"Cannot find nickname from your request."}`
+        return result
+      }
+    }
     if (path.includes('/ff')) {
       const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
@@ -185,7 +207,7 @@ async function serveResult(request) {
   let dc = new URL(request.url).searchParams.get('decode')
   let code = 200
   let result = await callAPI(request)
-  if (JSON.parse(result).name == undefined) {
+  if (result.includes(`"undefined"`)) {
     result = `{"success":false,"message":"Cannot find nickname from your request."}`
   }
   if (JSON.parse(result).success == false) {
