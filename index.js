@@ -211,7 +211,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Method': 'GET',
-      'Cache-Control': 'max-age=600',
+      'Cache-Control': 'max-age=43200',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
