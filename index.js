@@ -210,15 +210,16 @@ async function serveResult(request) {
     status: code,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Method': 'GET',
-      'Cache-Control': 'max-age=43200',
+      'Access-Control-Allow-Method': 'GET, HEAD',
+      'Cache-Control': 'public, max-age=43200',
+      'Content-Length': result.length,
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
   return response
 }
 async function checkCache(request) {
-  if (request.method !== 'GET') {
+  if (request.method !== 'GET' || request.method !== 'HEAD') {
     return new Response('Method Not Allowed', {
       status: 405
     })
