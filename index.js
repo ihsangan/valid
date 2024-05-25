@@ -212,27 +212,28 @@ async function serveResult(request) {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Method': 'GET, HEAD',
       'Cache-Control': 'public, max-age=43200',
-      'Content-Length': result.length,
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
   return response
 }
 async function checkCache(request) {
-  if (request.method !== 'GET' || request.method !== 'HEAD') {
+  if (request.method == 'GET' || request.method == 'HEAD') {
+    let now = Date.now()
+    let cache = caches.default
+    let response = await cache.match(request.url)
+    if (!response) {
+      response = await serveResult(request)
+      await cache.put(request.url, response.clone())
+    }
+    response = new Response(response.body, response)
+    response.headers.delete('Cache-Control')
+    response.headers.append('X-Response-Time', Date.now() - now)
+    return response
+  }
+  else {
     return new Response('Method Not Allowed', {
       status: 405
     })
   }
-  let now = Date.now()
-  let cache = caches.default
-  let response = await cache.match(request.url)
-  if (!response) {
-    response = await serveResult(request)
-    await cache.put(request.url, response.clone())
-  }
-  response = new Response(response.body, response)
-  response.headers.delete('Cache-Control')
-  response.headers.append('X-Response-Time', Date.now() - now)
-  return response
 }
