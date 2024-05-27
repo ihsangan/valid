@@ -12,6 +12,31 @@ async function callAPI(request) {
     if (!id) {
       return `{"success":false,"message":"Bad Request"}`
     }
+    if (path.includes('/pgr')) {
+      if (zone.toLowerCase().includes('ap')) {
+        sn = 'Asia-Pacific'
+        sv = '5000'
+      } else if (zone.toLowerCase().includes('eu')) {
+        sn = 'Europe'
+        sv = '5001'
+      } else if (zone.toLowerCase().includes('na')) {
+        sn = 'North America'
+        sv = '5002'
+      } else {
+        return `{"success":false,"message":"Bad request"}`
+      }
+      const body = `voucherPricePoint.id=259947&voucherPricePoint.price=15136.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=PUNISHING_GRAY_RAVEN&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      return `{"success":true,"game":"Punishing: Gray Raven","server":"${sn}","id":${id},"name":"${data.confirmationFields.username}"}`
+    }
     if (path.includes('/hsr')) {
       if (id. startsWith('6')) {
         sn = 'America'

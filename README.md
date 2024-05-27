@@ -39,6 +39,12 @@ GET `hsr?id=PLAYER_ID`
 GET `hi?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/hi?id=10000001
+### Punishing: Gray Raven (AP, EU, NA)
+GET `pgr?id=ID&zone=SERVER_ID`
+
+Keterangan untuk identifikasi server: AP(Asia-Pasifik), EU(Europe), NA(North America)
+
+**Contoh:** https://api.isan.eu.org/nickname/pgr?id=16746755&zone=AP
 ### Sausage Man
 GET `sm?id=PLAYER_ID`
 
@@ -83,5 +89,7 @@ https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=false
 
 Contoh penggunaan `?decode=true`
 https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=true atau https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044 (sama saja).
+## Monitoring
+API monitoring [UptimeRobot](https://stats.uptimerobot.com/s9axzR77Fm)
 # Copyright
 © Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), tidak terafiliasi dengan Codashop
