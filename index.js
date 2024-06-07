@@ -217,7 +217,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Sausage Man","id":"${id}","name":"${data.confirmationFields.username}"}`
+      return `{"success":true,"game":"Point Blank","id":"${id}","name":"${data.confirmationFields.username}"}`
     }
     else {
       return `{"success":false,"message":"Bad request"}`
