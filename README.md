@@ -39,6 +39,10 @@ GET `hsr?id=PLAYER_ID`
 GET `hi?id=PLAYER_ID`
 
 **Contoh:** https://api.isan.eu.org/nickname/hi?id=10000001
+### Point Blank
+GET `pb?id=ZEPETTO_ID`
+
+**Contoh:** https://api.isan.eu.org/nickname/pb?id=wakwaw55
 ### Punishing: Gray Raven (AP, EU, NA)
 GET `pgr?id=ID&zone=SERVER_ID`
 

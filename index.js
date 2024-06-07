@@ -147,9 +147,9 @@ async function callAPI(request) {
       const response = await fetch(request)
       const data = await response.json()
       if (data.success == true) {
-        return `{"success":true,"game":"VALORANT","id":"${id}","region": "Indonesia","name":"${data.confirmationFields.username}"}`
+        return `{"success":true,"game":"VALORANT","id":"${id}","region":"Indonesia","name":"${data.confirmationFields.username}"}`
       } else if (data.errorCode == -200) {
-        return `{"success":true,"game":"VALORANT","id":"${id}","region": "unknown","name":"${data.confirmationFields.userId}"}`
+        return `{"success":true,"game":"VALORANT","id":"${id}","region":"","name":"${data.confirmationFields.userId}"}`
       } else {
         return `{"success":false,"message":"Cannot find nickname from your request."}`
       }
@@ -205,6 +205,19 @@ async function callAPI(request) {
       const response = await fetch(request)
       const data = await response.json()
       return `{"success":true,"game":"Super Sus","id":${id},"name":"${data.confirmationFields.username}"}`
+    }
+    if (path.includes('/pb')) {
+      const body = `voucherPricePoint.id=54700&voucherPricePoint.price=11000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=POINT_BLANK&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      return `{"success":true,"game":"Sausage Man","id":"${id}","name":"${data.confirmationFields.username}"}`
     }
     else {
       return `{"success":false,"message":"Bad request"}`
