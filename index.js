@@ -237,7 +237,7 @@ async function serveResult(request) {
     result.name = decodeURIComponent(result.name)
     }
   }
-  else if (result.name = undefined) {
+  else if (result.name = undefined || !result.name) {
     result = {success:false,message:"Not found"}
   }
   if (result.success == false) {
