@@ -10,7 +10,7 @@ async function callAPI(request) {
   const zone = params.get('zone')
   try {
     if (!id) {
-      return `{"success":false,"message":"Bad Request"}`
+      return {success:false,message:"Bad Request"}
     }
     if (path.includes('/pgr')) {
       if (zone.toLowerCase().includes('ap')) {
@@ -23,7 +23,7 @@ async function callAPI(request) {
         sn = 'North America'
         sv = '5002'
       } else {
-        return `{"success":false,"message":"Bad request"}`
+        return {success:false,message:"Bad request"}
       }
       const body = `voucherPricePoint.id=259947&voucherPricePoint.price=15136.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=PUNISHING_GRAY_RAVEN&shopLang=id_ID`
       const request = new Request(endpoint, {
@@ -35,7 +35,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Punishing: Gray Raven","server":"${sn}","id":${id},"name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Punishing: Gray Raven",server:sn,id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/hsr')) {
       if (id. startsWith('6')) {
@@ -51,7 +51,7 @@ async function callAPI(request) {
         sn = 'SAR (Taiwan, Hong Kong, Macao)'
         sv = 'prod_official_cht'
       } else {
-        return `{"success":false,"message":"Bad request"}`
+        return {success:false,message:"Bad request"}
       }
       const body = `voucherPricePoint.id=855316&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=HONKAI_STAR_RAIL&shopLang=id_ID`
       const request = new Request(endpoint, {
@@ -63,7 +63,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Honkai: Star Rail","server":"${sn}","id":${id},"name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Honkai: Star Rail",server:sn,id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/gi')) {
       if (id. startsWith('6')) {
@@ -79,7 +79,7 @@ async function callAPI(request) {
         sn = 'SAR (Taiwan, Hong Kong, Macao)'
         sv = 'os_cht'
       } else {
-        return `{"success":false,"message":"Bad request"}`
+        return {success:false,message:"Bad request"}
       }
       const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
@@ -91,7 +91,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Genshin Impact","server":"${sn}","id":${id},"name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Genshin Impact",server:sn,id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/hi')) {
       const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
@@ -104,10 +104,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Honkai Impact 3rd","id":${id},"name":"${data.confirmationFields.username}"}`
-    }
-    if (path.includes('/ml') && !zone) {
-      return `{"success":false,"message":"Bad Request"}`
+      return {success:true,game:"Honkai Impact 3rd",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/ml')) {
       const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID&voucherTypeId=1&gvtId=1`
@@ -120,7 +117,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Mobile Legends: Bang Bang","id":${id},"zoneId":${zone},"name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Mobile Legends: Bang Bang",id:id,zoneId:zone,name:data.confirmationFields.username}
     }
     if (path.includes('/sm')) {
       const body = `voucherPricePoint.id=256513&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=global-release&voucherTypeName=SAUSAGE_MAN&shopLang=id_ID`
@@ -133,7 +130,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Sausage Man","id":"${id}","name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Sausage Man",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/valo')) {
       const body = `voucherPricePoint.id=115691&voucherPricePoint.price=15000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=VALORANT&voucherTypeId=109&gvtId=139&shopLang=id_ID`
@@ -147,11 +144,11 @@ async function callAPI(request) {
       const response = await fetch(request)
       const data = await response.json()
       if (data.success == true) {
-        return `{"success":true,"game":"VALORANT","id":"${id}","region":"Indonesia","name":"${data.confirmationFields.username}"}`
+        return {success:true,game:"VALORANT",id:id,region:"Indonesia",name:data.confirmationFields.username}
       } else if (data.errorCode == -200) {
-        return `{"success":true,"game":"VALORANT","id":"${id}","region":"","name":"${data.confirmationFields.userId}"}`
+        return {success:true,game:"VALORANT",id:id,region:"",name:data.confirmationFields.userId}
       } else {
-        return `{"success":false,"message":"Cannot find nickname from your request."}`
+        return {success:false,message:"Not found"}
       }
     }
     if (path.includes('/ff')) {
@@ -165,7 +162,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Garena Free Fire","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+      return {success:true,game:"Garena Free Fire",id:id,name:data.confirmationFields.roles[0].role}
     }
     if (path.includes('/cod')) {
       const body = `voucherPricePoint.id=46114&voucherPricePoint.price=5000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY&shopLang=id_ID&voucherTypeId=1&gvtId=1`
@@ -178,7 +175,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Call Of Duty","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+      return {success:true,game:"Call Of Duty",id:id,name:data.confirmationFields.roles[0].role}
     }
     if (path.includes('/aov')) {
       const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID&voucherTypeId=1&gvtId=1`
@@ -191,7 +188,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Garena AOV (Arena of Valor)","id":${id},"name":"${data.confirmationFields.roles[0].role}"}`
+      return {success:true,game:"Garena AOV (Arena of Valor)",id:id,name:data.confirmationFields.roles[0].role}
     }
     if (path.includes('/sus')) {
       const body = `voucherPricePoint.id=266077&voucherPricePoint.price=13000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=SUPER_SUS&shopLang=id_ID`
@@ -204,7 +201,7 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Super Sus","id":${id},"name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Super Sus",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/pb')) {
       const body = `voucherPricePoint.id=54700&voucherPricePoint.price=11000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=POINT_BLANK&shopLang=id_ID`
@@ -217,34 +214,34 @@ async function callAPI(request) {
       })
       const response = await fetch(request)
       const data = await response.json()
-      return `{"success":true,"game":"Point Blank","id":"${id}","name":"${data.confirmationFields.username}"}`
+      return {success:true,game:"Point Blank",id:id,name:data.confirmationFields.username}
     }
     else {
-      return `{"success":false,"message":"Bad request"}`
+      return {success:false,message:"Bad request"}
     }
   }
   catch (error) {
-    return `{"success":false,"message":"Cannot find nickname from your request."}`
+    return {success:false,message:"Not found"}
   }
 }
 async function serveResult(request) {
   let dc = new URL(request.url).searchParams.get('decode')
   let code = 200
   let result = await callAPI(request)
-  if (result.includes(`"undefined"`)) {
-    result = `{"success":false,"message":"Cannot find nickname from your request."}`
+  if (result.name.includes(`undefined`)) {
+    result = {success:false,message:"Not found"}
   }
-  if (JSON.parse(result).success == false) {
+  if (result.success == false) {
     code = 400
   }
-  result = result.replace(/\u002B/g, '%20')
+  result.name = result.name.replace(/\u002B/g, '%20')
   if (dc == false) {
     result = result
   }
   if (!dc || dc == true) {
-    result = decodeURIComponent(result)
+    result.name = decodeURIComponent(result.name)
   }
-  let response = new Response(result, {
+  let response = new Response(JSON.stringify(result), {
     status: code,
     headers: {
       'Access-Control-Allow-Origin': '*',
