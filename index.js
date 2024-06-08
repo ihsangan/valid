@@ -228,18 +228,20 @@ async function serveResult(request) {
   let dc = new URL(request.url).searchParams.get('decode')
   let code = 200
   let result = await callAPI(request)
-  if (result.name.includes(`undefined`)) {
+  if (result.name != undefined) {
+    result.name = result.name.replace(/\u002B/g, '%20')
+    if (dc == false) {
+    result = result
+    }
+    if (!dc || dc == true) {
+    result.name = decodeURIComponent(result.name)
+    }
+  }
+  else if (result.name = undefined) {
     result = {success:false,message:"Not found"}
   }
   if (result.success == false) {
     code = 400
-  }
-  result.name = result.name.replace(/\u002B/g, '%20')
-  if (dc == false) {
-    result = result
-  }
-  if (!dc || dc == true) {
-    result.name = decodeURIComponent(result.name)
   }
   let response = new Response(JSON.stringify(result), {
     status: code,
