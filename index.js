@@ -6,8 +6,8 @@ async function callAPI(request) {
   const path = url.pathname
   const params = url.searchParams
   const endpoint = 'https://order-sg.codashop.com/initPayment.action'
-  const id = params.get('id')
-  const zone = params.get('zone')
+  let id = params.get('id')
+  let zone = params.get('zone')
   try {
     if (!id) {
       return {success:false,message:"Bad Request"}
@@ -254,7 +254,7 @@ async function serveResult(request) {
     result.name = decodeURIComponent(result.name)
     }
   }
-  else if (result.name = undefined || !result.name) {
+  else if (result.name = undefined || !result.name && result.success == true) {
     result = {success:false,message:"Not found"}
   }
   if (result.success == false) {
