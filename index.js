@@ -25,7 +25,7 @@ async function callAPI(request) {
       } else {
         return {success:false,message:"Bad request"}
       }
-      const body = `voucherPricePoint.id=259947&voucherPricePoint.price=15136.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=PUNISHING_GRAY_RAVEN&shopLang=id_ID`
+      const body = `voucherPricePoint.id=259947&voucherPricePoint.price=15136&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=PUNISHING_GRAY_RAVEN&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -53,7 +53,7 @@ async function callAPI(request) {
       } else {
         return {success:false,message:"Bad request"}
       }
-      const body = `voucherPricePoint.id=855316&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=HONKAI_STAR_RAIL&shopLang=id_ID`
+      const body = `voucherPricePoint.id=855316&voucherPricePoint.price=16000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=HONKAI_STAR_RAIL&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -81,7 +81,7 @@ async function callAPI(request) {
       } else {
         return {success:false,message:"Bad request"}
       }
-      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -111,7 +111,7 @@ async function callAPI(request) {
       return {success:true,game:"Clash Of Clans",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/hi')) {
-      const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
+      const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16500&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -124,7 +124,7 @@ async function callAPI(request) {
       return {success:true,game:"Honkai Impact 3rd",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/ml')) {
-      const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID&voucherTypeId=1&gvtId=1`
+      const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -137,7 +137,7 @@ async function callAPI(request) {
       return {success:true,game:"Mobile Legends: Bang Bang",id:id,zoneId:zone,name:data.confirmationFields.username}
     }
     if (path.includes('/sm')) {
-      const body = `voucherPricePoint.id=256513&voucherPricePoint.price=16000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=global-release&voucherTypeName=SAUSAGE_MAN&shopLang=id_ID`
+      const body = `voucherPricePoint.id=256513&voucherPricePoint.price=16000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=global-release&voucherTypeName=SAUSAGE_MAN&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -150,7 +150,7 @@ async function callAPI(request) {
       return {success:true,game:"Sausage Man",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/valo')) {
-      const body = `voucherPricePoint.id=115691&voucherPricePoint.price=15000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=VALORANT&voucherTypeId=109&gvtId=139&shopLang=id_ID`
+      const body = `voucherPricePoint.id=115691&voucherPricePoint.price=15000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=VALORANT&voucherTypeId=109&gvtId=139&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -169,7 +169,7 @@ async function callAPI(request) {
       }
     }
     if (path.includes('/ff')) {
-      const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID&voucherTypeId=1&gvtId=1`
+      const body = `voucherPricePoint.id=8050&voucherPricePoint.price=1000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=FREEFIRE&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -182,7 +182,7 @@ async function callAPI(request) {
       return {success:true,game:"Garena Free Fire",id:id,name:data.confirmationFields.roles[0].role}
     }
     if (path.includes('/cod')) {
-      const body = `voucherPricePoint.id=46114&voucherPricePoint.price=5000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY&shopLang=id_ID&voucherTypeId=1&gvtId=1`
+      const body = `voucherPricePoint.id=46114&voucherPricePoint.price=5000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -195,7 +195,7 @@ async function callAPI(request) {
       return {success:true,game:"Call Of Duty",id:id,name:data.confirmationFields.roles[0].role}
     }
     if (path.includes('/aov')) {
-      const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID&voucherTypeId=1&gvtId=1`
+      const body = `voucherPricePoint.id=7946&voucherPricePoint.price=10000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=AOV&shopLang=id_ID&voucherTypeId=1&gvtId=1`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -208,7 +208,7 @@ async function callAPI(request) {
       return {success:true,game:"Garena AOV (Arena of Valor)",id:id,name:data.confirmationFields.roles[0].role}
     }
     if (path.includes('/sus')) {
-      const body = `voucherPricePoint.id=266077&voucherPricePoint.price=13000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=SUPER_SUS&shopLang=id_ID`
+      const body = `voucherPricePoint.id=266077&voucherPricePoint.price=13000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=SUPER_SUS&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
@@ -221,7 +221,7 @@ async function callAPI(request) {
       return {success:true,game:"Super Sus",id:id,name:data.confirmationFields.username}
     }
     if (path.includes('/pb')) {
-      const body = `voucherPricePoint.id=54700&voucherPricePoint.price=11000.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=POINT_BLANK&shopLang=id_ID`
+      const body = `voucherPricePoint.id=54700&voucherPricePoint.price=11000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=POINT_BLANK&shopLang=id_ID`
       const request = new Request(endpoint, {
         method: 'POST',
         headers: {
