@@ -93,6 +93,23 @@ async function callAPI(request) {
       const data = await response.json()
       return {success:true,game:"Genshin Impact",server:sn,id:id,name:data.confirmationFields.username}
     }
+    if (path.includes('/coc')) {
+      if (!id.startsWith('#')) {
+        id = `#${id}`
+      }
+      id = id.toUpperCase()
+      const body = `voucherPricePoint.id=453696&voucherPricePoint.price=16000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CLASH_OF_CLANS&shopLang=id_ID`
+      const request = new Request(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      return {success:true,game:"Clash Of Clans",id:id,name:data.confirmationFields.username}
+    }
     if (path.includes('/hi')) {
       const body = `voucherPricePoint.id=48160&voucherPricePoint.price=16500.0&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=&voucherTypeName=HONKAI_IMPACT&shopLang=id_ID`
       const request = new Request(endpoint, {

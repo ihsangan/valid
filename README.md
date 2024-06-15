@@ -27,60 +27,66 @@ application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html
 ```
 # Daftar game
 Berikut adalah daftar game yang didukung oleh API ini.
+### Clash Of Clans
+GET `coc?id=URISafePLAYER_TAG`
+
+**Catatan:** input id tidak case-sensitive, semua akan dikapitalisasi secara otomatis. Jika diawali dengan `#` harap ubah terlebih dahulu ke bentuk URI Safe `%23`.
+
+**Contoh:** [%23YVJVJVJJ](https://api.isan.eu.org/nickname/coc?id=%23YVJVJVJJ), [ry22qjcr](https://api.isan.eu.org/nickname/coc?id=ry22qjcr)
 ### Genshin Impact (America, Asia, Europe, SAR) [CENSORED]
 GET `gi?id=PLAYER_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/gi?id=600000000
-### Honkai: Star Rail (America, Asia, Europe, SAR) [CENSORED]
-GET `hsr?id=PLAYER_ID`
-
-**Contoh:** https://api.isan.eu.org/nickname/hsr?id=600000001
+**Contoh:** [600000000](https://api.isan.eu.org/nickname/gi?id=600000000)
 ### Honkai Impact 3rd [CENSORED]
 GET `hi?id=PLAYER_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/hi?id=10000001
+**Contoh:** [10000001](https://api.isan.eu.org/nickname/hi?id=10000001)
+### Honkai: Star Rail (America, Asia, Europe, SAR) [CENSORED]
+GET `hsr?id=PLAYER_ID`
+
+**Contoh:** [600000001](https://api.isan.eu.org/nickname/hsr?id=600000001)
 ### Point Blank
 GET `pb?id=ZEPETTO_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/pb?id=wakwaw55
+**Contoh:** [wakwaw55](https://api.isan.eu.org/nickname/pb?id=wakwaw55)
 ### Punishing: Gray Raven (AP, EU, NA)
 GET `pgr?id=ID&zone=SERVER_ID`
 
 Keterangan untuk identifikasi server: AP(Asia-Pasifik), EU(Europe), NA(North America)
 
-**Contoh:** https://api.isan.eu.org/nickname/pgr?id=16746755&zone=AP
+**Contoh:** [?id=16746755&zone=AP](https://api.isan.eu.org/nickname/pgr?id=16746755&zone=AP)
 ### Sausage Man
 GET `sm?id=PLAYER_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/sm?id=5sn9jf
+**Contoh:** [5sn9jf](https://api.isan.eu.org/nickname/sm?id=5sn9jf)
 ### Super Sus
 GET `sus?id=SPACE_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/sus?id=15916600
+**Contoh:** [15916600](https://api.isan.eu.org/nickname/sus?id=15916600)
 ### Valorant
-GET `valo?id=URLEncodedRiotIdAndTag`
+GET `valo?id=URISafeRiotIdAndTag`
 
-**Contoh region ID :** https://api.isan.eu.org/nickname/valo?id=yuyun%23123
+**Contoh region ID :** [yuyun%23123](https://api.isan.eu.org/nickname/valo?id=yuyun%23123)
 
-**Contoh region non ID :** https://api.isan.eu.org/nickname/valo?id=Westbourne%23USA
+**Contoh region non ID :** [Westbourne%23USA](https://api.isan.eu.org/nickname/valo?id=Westbourne%23USA)
 ## ID-REG-ONLY
-Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terdaftar dari region Indonesia
-### Mobile Legends: Bang Bang
-GET `ml?id=PLAYER_ID&zone=ZONE_ID`
-
-**Contoh:** https://api.isan.eu.org/nickname/ml?id=1114917746&zone=13486
-### Free Fire
-GET `ff?id=PLAYER_ID`
-
-**Contoh:** https://api.isan.eu.org/nickname/ff?id=225009777
+Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terdaftar dari region Indonesia/SEA
 ### Arena of Valor
 GET `aov?id=PLAYER_OR_OPEN_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/aov?id=124590895269021
+**Contoh:** [124590895269021](https://api.isan.eu.org/nickname/aov?id=124590895269021)
 ### Call Of Duty
 GET `cod?id=PLAYER_OR_OPEN_ID`
 
-**Contoh:** https://api.isan.eu.org/nickname/cod?id=243402956362890880
+**Contoh:** [243402956362890880](https://api.isan.eu.org/nickname/cod?id=243402956362890880)
+### Free Fire
+GET `ff?id=PLAYER_ID`
+
+**Contoh:** [225009777](https://api.isan.eu.org/nickname/ff?id=225009777)
+### Mobile Legends: Bang Bang
+GET `ml?id=PLAYER_ID&zone=ZONE_ID`
+
+**Contoh:** [?id=1114917746&zone=13486](https://api.isan.eu.org/nickname/ml?id=1114917746&zone=13486)
 ## Parameter Opsional
 Kamu dapat menambah parameter `decode` dan mengisi value ke `false` (default ke `true`).
 
@@ -89,11 +95,13 @@ Ketika value diatur ke `false` maka data nickname akan ditampilkan dala URL enco
 Sementara jika value adalah `true` maka data akan bisa dibaca secara langsung tapi kemungkinan error dan gagal dalam pembacaan data akan muncul.
 
 Berikut adalah contoh penggunaan `?decode=false`
-https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=false
+
+[ml?id=1007909047&zone=13044&decode=false](https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=false)
 
 Contoh penggunaan `?decode=true`
-https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=true atau https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044 (sama saja).
+
+[ml?id=1007909047&zone=13044&decode=true](https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=true) atau [ml?id=1007909047&zone=13044](https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044) (sama saja).
 ## Monitoring
 API monitoring [UptimeRobot](https://stats.uptimerobot.com/s9axzR77Fm)
 # Copyright
-© Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), tidak terafiliasi dengan Codashop
+© Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), tidak terafiliasi dengan Codashop.
