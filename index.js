@@ -259,6 +259,7 @@ async function serveResult(request) {
   }
   if (result.success == false) {
     code = 400
+    delete result.name
   }
   let response = new Response(JSON.stringify(result), {
     status: code,
