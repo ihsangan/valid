@@ -1,7 +1,9 @@
 name: Deploy
 on:
   push:
-    branches: [ main ]
+    branches: [ esm ]
+    path: 
+      - 'src/**'
   workflow_dispatch:
 jobs:
   build:
