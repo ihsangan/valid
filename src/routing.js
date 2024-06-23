@@ -2,8 +2,8 @@ import { getUrl } from './utils'
 import ff from './router/ff'
 import ml from './router/ml'
 import coc from './router/coc'
-import gi from './router/gi'/*
-import from './router/'
+import gi from './router/gi'
+import hi from './router/hi'/*
 import from './router/'
 import from './router/'
 import from './router/'
@@ -31,9 +31,9 @@ export default async function callAPI(request) {
       return await coc(id)
     } if (path.includes('/gi')) {
       return await gi(id)
-    }/*  if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
+    }  if (path.includes('/hi')) {
+      return await hi(id)
+    } /* if (path.includes('/coc')) {
       return await coc(id)
     }  if (path.includes('/coc')) {
       return await coc(id)
