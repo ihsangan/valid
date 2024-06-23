@@ -1,4 +1,4 @@
-import { timeNow } from './utils'
+import { timeNow, getUrl } from './utils'
 import callAPI from './routing'
 
 export default async function checkCache(request) {
@@ -16,14 +16,17 @@ export default async function checkCache(request) {
     return response
   }
   else {
-    return new Response('Method Not Allowed', {
-      status: 405
+    return new Response(JSON.stringify({ success: false, message: 'Method not allowed'}), {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
     })
   }
 }
 
 async function serveResult(request) {
-  let dc = new URL(request.url).searchParams.get('decode')
+  let dc = getUrl(request).searchParams.get('decode')
   let code = 200
   let result = await callAPI(request)
   if (result.name != undefined) {
@@ -36,10 +39,14 @@ async function serveResult(request) {
     }
   }
   else if (result.name = undefined || !result.name && result.success == true) {
-    result = {success:false,message:"Not found"}
+    result = { success: false, message: 'Not found' }
   }
-  if (result.success == false) {
+  if (result.message == 'Bad request') {
     code = 400
+    delete result.name
+  }
+  if (result.message == 'Not found') {
+    code = 404
     delete result.name
   }
   let response = new Response(JSON.stringify(result), {
