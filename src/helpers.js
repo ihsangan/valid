@@ -41,11 +41,11 @@ async function serveResult(request) {
   else if (result.name = undefined || !result.name && result.success == true) {
     result = { success: false, message: 'Not found' }
   }
-  if (result.message == 'Bad request') {
+  if (result.success == false && result.message == 'Bad request') {
     code = 400
     delete result.name
   }
-  if (result.message == 'Not found') {
+  if (result.success == false && result.message == 'Not found') {
     code = 404
     delete result.name
   }
