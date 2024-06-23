@@ -10,7 +10,7 @@ export default async function callAPI(request) {
   let zone = params.get('zone')
   try {
     if (!id) {
-      return { success: false, message: 'Bad Request' }
+      return { success: false, message: 'Bad request' }
     } if (path.includes('/ff')) {
       return await ff(id)
     } if (path.includes('/ml')) {
@@ -19,6 +19,6 @@ export default async function callAPI(request) {
       return { success: false, message: 'Bad request' }
     }
   } catch (error) {
-    return { success: false, message: 'Not Found' }
+    return { success: false, message: 'Not found' }
   }
 }
