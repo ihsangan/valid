@@ -10,5 +10,5 @@ export default async function ml(id, zone) {
     body
   })
   const data = await response.json()
-  return { success: true, game: "Mobile Legends: Bang Bang", id: id, zoneId: zone, name:data.confirmationFields.username }
+  return { success: true, game: "Mobile Legends: Bang Bang", id: Number(id), zoneId: Number(zone), name:data.confirmationFields.username }
 }

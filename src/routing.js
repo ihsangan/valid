@@ -1,7 +1,18 @@
-import { getUrl, endpoint } from './utils'
+import { getUrl } from './utils'
 import ff from './router/ff'
 import ml from './router/ml'
 import coc from './router/coc'
+import gi from './router/gi'/*
+import from './router/'
+import from './router/'
+import from './router/'
+import from './router/'
+import from './router/'
+import from './router/'
+import from './router/'
+import from './router/'
+import from './router/'*/
+
 
 export default async function callAPI(request) {
   const url = getUrl(request)
@@ -18,7 +29,27 @@ export default async function callAPI(request) {
       return await ml(id, zone)
     } if (path.includes('/coc')) {
       return await coc(id)
-    } else {
+    } if (path.includes('/gi')) {
+      return await gi(id)
+    }/*  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    }  if (path.includes('/coc')) {
+      return await coc(id)
+    } */else {
       return { success: false, message: 'Bad request' }
     }
   } catch (error) {

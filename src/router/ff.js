@@ -10,5 +10,5 @@ export default async function ff(id) {
     body
   })
   const data = await response.json()
-  return { success: true, game: "Garena Free Fire", id: id, name:data.confirmationFields.roles[0].role }
+  return { success: true, game: "Garena Free Fire", id: Number(id), name:data.confirmationFields.roles[0].role }
 }
