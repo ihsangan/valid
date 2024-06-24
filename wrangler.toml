@@ -1,3 +1,5 @@
-name = "validator-esm"
+name = "validator"
 workers_dev = true
 compatibility_date = "2022-01-01"
+[placement]
+mode = "smart"
