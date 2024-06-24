@@ -5,9 +5,9 @@ import coc from './router/coc'
 import gi from './router/gi'
 import hi from './router/hi'
 import hsr from './router/hsr'
-import pb from './router/pb'/*
-import from './router/'
-import from './router/'
+import pb from './router/pb'
+import sm from './router/sm'
+import sus from './router/sus'/*
 import from './router/'
 import from './router/'
 import from './router/'
@@ -37,11 +37,11 @@ export default async function callAPI(request) {
       return await hsr(id)
     } if (path.includes('/pb')) {
       return await pb(id)
-    } /* if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
+    } if (path.includes('/sm')) {
+      return await sm(id)
+    }  if (path.includes('/sus')) {
+      return await sus(id)
+    }/* if (path.includes('/coc')) {
       return await coc(id)
     }  if (path.includes('/coc')) {
       return await coc(id)
