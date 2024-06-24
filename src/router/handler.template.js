@@ -10,5 +10,5 @@ export default async function gameName(id) {
     body
   })
   const data = await response.json()
-  return { success: true, game: "", id: id, name:data.confirmationFields.username }
+  return { success: true, game: '', id: id, name:data.confirmationFields.username }
 }

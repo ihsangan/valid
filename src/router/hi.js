@@ -10,5 +10,5 @@ export default async function hi(id) {
     body
   })
   const data = await response.json()
-  return { success: true, game: "Honkai Impact 3rd", id: Number(id), name:data.confirmationFields.username }
+  return { success: true, game: 'Honkai Impact 3rd', id: Number(id), name:data.confirmationFields.username }
 }
