@@ -9,10 +9,9 @@ import pb from './router/pb'
 import sm from './router/sm'
 import sus from './router/sus'
 import aov from './router/aov'
-import cod from './router/cod'/*
-import from './router/'
-import from './router/'*/
-
+import cod from './router/cod'
+import valo from './router/valo'
+import pgr from './router/pgr'
 
 export default async function callAPI(request) {
   const url = getUrl(request)
@@ -45,11 +44,11 @@ export default async function callAPI(request) {
       return await aov(id)
     } if (path.includes('/cod')) {
       return await cod(id)
-    } /* if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
-      return await coc(id)
-    } */else {
+    } if (path.includes('/valo')) {
+      return await valo(id)
+    }  if (path.includes('/pgr')) {
+      return await pgr(id)
+    } else {
       return { success: false, message: 'Bad request' }
     }
   } catch (error) {
