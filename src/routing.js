@@ -7,9 +7,9 @@ import hi from './router/hi'
 import hsr from './router/hsr'
 import pb from './router/pb'
 import sm from './router/sm'
-import sus from './router/sus'/*
-import from './router/'
-import from './router/'
+import sus from './router/sus'
+import aov from './router/aov'
+import cod from './router/cod'/*
 import from './router/'
 import from './router/'*/
 
@@ -41,11 +41,11 @@ export default async function callAPI(request) {
       return await sm(id)
     }  if (path.includes('/sus')) {
       return await sus(id)
-    }/* if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
+    } if (path.includes('/aov')) {
+      return await aov(id)
+    } if (path.includes('/cod')) {
+      return await cod(id)
+    } /* if (path.includes('/coc')) {
       return await coc(id)
     }  if (path.includes('/coc')) {
       return await coc(id)
