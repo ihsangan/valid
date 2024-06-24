@@ -47,7 +47,7 @@ export default async function callAPI(request) {
     } if (path.includes('/valo')) {
       return await valo(id)
     }  if (path.includes('/pgr')) {
-      return await pgr(id)
+      return await pgr(id, zone)
     } else {
       return { success: false, message: 'Bad request' }
     }

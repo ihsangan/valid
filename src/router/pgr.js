@@ -1,6 +1,6 @@
 import { endpoint } from '../utils'
 
-export default async function pgr(id) {
+export default async function pgr(id, zone) {
   let sn = ''
   let sv = ''
   if (zone.toLowerCase().includes('ap')) {
