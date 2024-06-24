@@ -4,8 +4,8 @@ import ml from './router/ml'
 import coc from './router/coc'
 import gi from './router/gi'
 import hi from './router/hi'
-import hsr from './router/hsr'/*
-import from './router/'
+import hsr from './router/hsr'
+import pb from './router/pb'/*
 import from './router/'
 import from './router/'
 import from './router/'
@@ -35,9 +35,9 @@ export default async function callAPI(request) {
       return await hi(id)
     } if (path.includes('/hsr')) {
       return await hsr(id)
+    } if (path.includes('/pb')) {
+      return await pb(id)
     } /* if (path.includes('/coc')) {
-      return await coc(id)
-    }  if (path.includes('/coc')) {
       return await coc(id)
     }  if (path.includes('/coc')) {
       return await coc(id)
