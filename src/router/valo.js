@@ -1,7 +1,7 @@
 import { endpoint } from '../utils'
 
 export default async function gameName(id) {
-  const body = `voucherPricePoint.id=115691&voucherPricePoint.price=15000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=VALORANT&voucherTypeId=109&gvtId=139&shopLang=id_ID` 
+  const body = `voucherPricePoint.id=950510&voucherPricePoint.price=45000&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=VALORANT&voucherTypeId=109&gvtId=139&shopLang=id_ID` 
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
