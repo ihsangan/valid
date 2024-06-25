@@ -12,6 +12,7 @@ import aov from './router/aov'
 import cod from './router/cod'
 import valo from './router/valo'
 import pgr from './router/pgr'
+import la from './router/la'
 
 export default async function callAPI(request) {
   const url = getUrl(request)
@@ -46,8 +47,10 @@ export default async function callAPI(request) {
       return await cod(id)
     } if (path.includes('/valo')) {
       return await valo(id)
-    }  if (path.includes('/pgr')) {
+    } if (path.includes('/pgr')) {
       return await pgr(id, zone)
+    } if (path.includes('/la')) {
+      return await la(id, zone)
     } else {
       return { success: false, message: 'Bad request' }
     }

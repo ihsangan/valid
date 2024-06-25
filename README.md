@@ -30,7 +30,7 @@ Berikut adalah daftar game yang didukung oleh API ini.
 ### Clash Of Clans
 GET `coc?id=URISafePLAYER_TAG`
 
-**Catatan:** input id tidak case-sensitive, semua akan dikapitalisasi secara otomatis. Jika diawali dengan `#` harap ubah terlebih dahulu ke bentuk URI Safe `%23`.
+**Catatan:** input id bersifat case-insensitive, semua akan dikapitalisasi secara otomatis. Jika diawali dengan `#` harap ubah terlebih dahulu ke bentuk URI Safe `%23`.
 
 **Contoh:** [%23YVJVJVJJ](https://api.isan.eu.org/nickname/coc?id=%23YVJVJVJJ), [ry22qjcr](https://api.isan.eu.org/nickname/coc?id=ry22qjcr)
 ### Genshin Impact (America, Asia, Europe, SAR) [CENSORED]
@@ -45,6 +45,12 @@ GET `hi?id=PLAYER_ID`
 GET `hsr?id=PLAYER_ID`
 
 **Contoh:** [600000001](https://api.isan.eu.org/nickname/hsr?id=600000001)
+### LifeAfter
+GET `la?id=PLAYER_ID&zone=SERVER_NAME`
+
+SERVER_NAME bersifat case-insensitive, untuk daftarnya ada [di sini](https://github.com/ihsangan/valid/blob/main/src/router/la.js).
+
+**Contoh:** [?id=22512309&zone=milestone](https://api.isan.eu.org/nickname/la?id=22512309&zone=milestone)
 ### Point Blank
 GET `pb?id=ZEPETTO_ID`
 
@@ -52,7 +58,7 @@ GET `pb?id=ZEPETTO_ID`
 ### Punishing: Gray Raven (AP, EU, NA)
 GET `pgr?id=ID&zone=SERVER_ID`
 
-Keterangan untuk identifikasi server: AP(Asia-Pasifik), EU(Europe), NA(North America)
+Case-insensitive, keterangan untuk identifikasi server: AP(Asia-Pasifik), EU(Europe), NA(North America)
 
 **Contoh:** [?id=16746755&zone=AP](https://api.isan.eu.org/nickname/pgr?id=16746755&zone=AP)
 ### Sausage Man
