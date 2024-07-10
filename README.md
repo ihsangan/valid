@@ -27,12 +27,6 @@ application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html
 ```
 # Daftar game
 Berikut adalah daftar game yang didukung oleh API ini.
-### Clash Of Clans
-GET `coc?id=URISafePLAYER_TAG`
-
-**Catatan:** input id bersifat case-insensitive, semua akan dikapitalisasi secara otomatis. Jika diawali dengan `#` harap ubah terlebih dahulu ke bentuk URI Safe `%23`.
-
-**Contoh:** [%23YVJVJVJJ](https://api.isan.eu.org/nickname/coc?id=%23YVJVJVJJ), [ry22qjcr](https://api.isan.eu.org/nickname/coc?id=ry22qjcr)
 ### Genshin Impact (America, Asia, Europe, SAR) [CENSORED]
 GET `gi?id=PLAYER_ID`
 
