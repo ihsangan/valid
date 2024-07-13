@@ -70,7 +70,7 @@ export default async function la(id, zone) {
   } else {
     return { success: false, message: 'Not found' }
   }
-  const body = `voucherPricePoint.id=45713&voucherPricePoint.price=14000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=NETEASE_LIFEAFTER&shopLang=id_ID` 
+  const body = `voucherPricePoint.id=45713&voucherPricePoint.price=15000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=NETEASE_LIFEAFTER&shopLang=id_ID` 
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
