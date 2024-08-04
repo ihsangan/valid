@@ -8,53 +8,57 @@ export default async function callAPI(request) {
   let id = params.get('id');
   let zone = params.get('zone');
 
-  try {
-    if (!id) {
-      return { success: false, message: 'Bad request' };
-    }
+  if (!id) {
+    return { success: false, message: 'Bad request' };
+  }
 
-    if (path.includes('/ff')) {
-      return await router.ff(id);
-    } 
-    if (path.includes('/ml')) {
-      return await router.ml(id, zone);
-    } 
-    if (path.includes('/gi')) {
-      return await router.gi(id);
-    } 
-    if (path.includes('/hi')) {
-      return await router.hi(id);
-    } 
-    if (path.includes('/hsr')) {
-      return await router.hsr(id);
-    } 
-    if (path.includes('/pb')) {
-      return await router.pb(id);
-    } 
-    if (path.includes('/sm')) {
-      return await router.sm(id);
-    }  
-    if (path.includes('/sus')) {
-      return await router.sus(id);
-    } 
-    if (path.includes('/aov')) {
-      return await router.aov(id);
-    } 
-    if (path.includes('/cod')) {
-      return await router.cod(id);
-    } 
-    if (path.includes('/valo')) {
-      return await router.valo(id);
-    } 
-    if (path.includes('/pgr')) {
-      return await router.pgr(id, zone);
-    } 
-    if (path.includes('/la')) {
-      return await router.la(id, zone);
-    } 
-    else {
-      return { success: false, message: 'Bad request' };
+  try {
+    let result;
+
+    switch (true) {
+      case path.includes('/ff'):
+        result = await router.ff(id);
+        break;
+      case path.includes('/ml'):
+        result = await router.ml(id, zone);
+        break;
+      case path.includes('/gi'):
+        result = await router.gi(id);
+        break;
+      case path.includes('/hi'):
+        result = await router.hi(id);
+        break;
+      case path.includes('/hsr'):
+        result = await router.hsr(id);
+        break;
+      case path.includes('/pb'):
+        result = await router.pb(id);
+        break;
+      case path.includes('/sm'):
+        result = await router.sm(id);
+        break;
+      case path.includes('/sus'):
+        result = await router.sus(id);
+        break;
+      case path.includes('/aov'):
+        result = await router.aov(id);
+        break;
+      case path.includes('/cod'):
+        result = await router.cod(id);
+        break;
+      case path.includes('/valo'):
+        result = await router.valo(id);
+        break;
+      case path.includes('/pgr'):
+        result = await router.pgr(id, zone);
+        break;
+      case path.includes('/la'):
+        result = await router.la(id, zone);
+        break;
+      default:
+        result = { success: false, message: 'Bad request' };
     }
+    return result;
   } catch (error) {
     return { success: false, message: 'Not found' };
   }
