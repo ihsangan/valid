@@ -54,7 +54,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Method': 'GET, HEAD',
-      'Cache-Control': 'public, max-age=43200',
+      'Cache-Control': 'private, max-age=0',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
