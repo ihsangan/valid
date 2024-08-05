@@ -53,7 +53,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Method': 'GET, HEAD',
-      'Cloudflare-CDN-Cache-Control': 'max-age=30',
+      'CDN-Cache-Control': 'max-age=30',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
