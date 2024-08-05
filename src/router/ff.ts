@@ -11,7 +11,7 @@ export default async function ff(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Garena Free Fire',
-    id: id,
+    id: Number(id),
     name: data.confirmationFields.roles[0].role
   };
 }
