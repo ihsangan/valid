@@ -53,7 +53,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Method': 'GET, HEAD',
-      'CDN-Cache-Control': 'public, max-age=43200, proxy-revalidate, immutable',
+      'CDN-Cache-Control': 's-maxage=43200, proxy-revalidate, immutable',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
