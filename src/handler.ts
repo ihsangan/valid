@@ -12,6 +12,7 @@ export default async function checkCache(request: Request): Promise<Response> {
     }
     response = new Response(response.body, response);
     response.head
+    response.headers.delete('Cache-Control');
     response.headers.append('X-Response-Time', timeNow() - now);
     return response;
   } else {
