@@ -11,7 +11,6 @@ export default async function checkCache(request) {
       await cache.put(request.url, response.clone())
     }
     response = new Response(response.body, response)
-    response.headers.delete('Cache-Control')
     response.headers.append('X-Response-Time', timeNow() - now)
     return response
   }
@@ -54,7 +53,7 @@ async function serveResult(request) {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Method': 'GET, HEAD',
-      'Cache-Control': 'private, max-age=0',
+      'Cloudflare-CDN-Cache-Control': 'max-age=30',
       'Content-Type': 'application/json; charset=utf-8',
     }
   })
