@@ -1,20 +1,17 @@
-import { getUrl } from './utils';
+import { getUrl, Result } from './utils';
 import * as router from './router';
 
-export default async function callAPI(request) {
+export default async function callAPI(request: Request): Promise<Result> {
   const url = getUrl(request);
   const path = url.pathname;
   const params = url.searchParams;
-  let id = params.get('id');
-  let zone = params.get('zone');
-
+  const id = params.get('id');
+  const zone = params.get('zone');
   if (!id) {
     return { success: false, message: 'Bad request' };
   }
-
   try {
-    let result;
-
+    let result: Result;
     switch (true) {
       case path.includes('/ff'):
         result = await router.ff(id);

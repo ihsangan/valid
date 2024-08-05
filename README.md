@@ -14,15 +14,15 @@ https://api.isan.eu.org/nickname/
 ```
 ## Output
 application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html/rfc4627))
-```
-{
-  "success": boolean,
-  "game": "string",
-  "id": number/"string",
-  "zoneId": number,
-  "server": "string",
-  "name": "string",
-  "message": "string"
+```ts
+interface Result {
+  success: boolean;
+  game?: string;
+  id?: number | string;
+  zoneId?: number;
+  server?: string,
+  name?: string;
+  message?: string;
 }
 ```
 # Daftar game
