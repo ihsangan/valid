@@ -11,7 +11,7 @@ export default async function ml(id: number, zone: number): Promise<Result> {
   return {
     success: true,
     game: 'Mobile Legends: Bang Bang',
-    id,
+    id: Number(id),
     zoneId: Number(zone),
     name:data.confirmationFields.username
   }

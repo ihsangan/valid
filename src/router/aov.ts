@@ -11,7 +11,7 @@ export default async function aov(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Garena: AOV (Arena Of Valor)',
-    id,
+    id: Number(id),
     name: data.confirmationFields.roles[0].role
   };
 }
