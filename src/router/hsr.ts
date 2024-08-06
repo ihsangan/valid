@@ -37,7 +37,7 @@ export default async function hsr(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Honkai: Star Rail',
-    id: Number(id),
+    id,
     server: sn,
     name: data.confirmationFields.username
   };

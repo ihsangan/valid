@@ -11,7 +11,7 @@ export default async function sus(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Super Sus',
-    id: Number(id),
+    id,
     name: data.confirmationFields.username 
   };
 }

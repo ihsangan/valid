@@ -32,7 +32,7 @@ export default async function pgr(id: number, zone: string): Promise<Result> {
   return {
     success: true,
     game: 'Punishing: Gray Raven',
-    id: Number(id),
+    id,
     server: sn,
     name: data.confirmationFields.username
   };

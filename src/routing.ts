@@ -14,19 +14,19 @@ export default async function callAPI(request: Request): Promise<Result> {
     let result: Result;
     switch (true) {
       case path.includes('/ff'):
-        result = await router.ff(id);
+        result = await router.ff(Number(id));
         break;
       case path.includes('/ml'):
-        result = await router.ml(id, zone);
+        result = await router.ml(Number(id), Number(zone));
         break;
       case path.includes('/gi'):
-        result = await router.gi(id);
+        result = await router.gi(Number(id));
         break;
       case path.includes('/hi'):
-        result = await router.hi(id);
+        result = await router.hi(Number(id));
         break;
       case path.includes('/hsr'):
-        result = await router.hsr(id);
+        result = await router.hsr(Number(id));
         break;
       case path.includes('/pb'):
         result = await router.pb(id);
@@ -35,22 +35,22 @@ export default async function callAPI(request: Request): Promise<Result> {
         result = await router.sm(id);
         break;
       case path.includes('/sus'):
-        result = await router.sus(id);
+        result = await router.sus(Number(id));
         break;
       case path.includes('/aov'):
-        result = await router.aov(id);
+        result = await router.aov(Number(id));
         break;
       case path.includes('/cod'):
-        result = await router.cod(id);
+        result = await router.cod(Number(id));
         break;
       case path.includes('/valo'):
         result = await router.valo(id);
         break;
       case path.includes('/pgr'):
-        result = await router.pgr(id, zone);
+        result = await router.pgr(Number(id), zone);
         break;
       case path.includes('/la'):
-        result = await router.la(id, zone);
+        result = await router.la(Number(id), zone);
         break;
       default:
         result = { success: false, message: 'Bad request' };

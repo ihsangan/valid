@@ -105,7 +105,7 @@ export default async function la(id: number, zone: string): Promise<Result> {
   return {
     success: true,
     game: 'LifeAfter',
-    id: Number(id),
+    id,
     server: sn,
     name: data.confirmationFields.username
   };

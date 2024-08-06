@@ -37,7 +37,7 @@ export default async function gi(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Genshin Impact',
-    id: Number(id),
+    id,
     server: sn,
     name: data.confirmationFields.username
   };

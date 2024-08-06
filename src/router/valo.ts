@@ -12,7 +12,7 @@ export default async function valo(id: number): Promise<Result> {
     return {
       success: true,
       game: 'VALORANT',
-      id: Number(id),
+      id,
       server: 'Indonesia',
       name: data.confirmationFields.username
     };
@@ -20,7 +20,7 @@ export default async function valo(id: number): Promise<Result> {
     return {
       success: true,
       game: 'VALORANT',
-      id: Number(id),
+      id,
       name: data.confirmationFields.userId
     };
   } else {

@@ -11,7 +11,7 @@ export default async function cod(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Call Of Duty',
-    id: Number(id),
+    id,
     name: data.confirmationFields.roles[0].role
   };
 }

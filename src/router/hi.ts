@@ -11,7 +11,7 @@ export default async function hi(id: number): Promise<Result> {
   return {
     success: true,
     game: 'Honkai Impact 3rd',
-    id: Number(id),
+    id,
     name: data.confirmationFields.username
   };
 }
