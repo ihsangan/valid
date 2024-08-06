@@ -11,8 +11,6 @@ export default async function checkCache(request: Request): Promise<Response> {
       await cache.put(request.url, response.clone());
     }
     response = new Response(response.body, response);
-    response.head
-    response.headers.delete('Cache-Control');
     response.headers.append('X-Response-Time', timeNow() - now);
     return response;
   } else {
