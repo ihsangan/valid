@@ -25,6 +25,10 @@ export default async function la(id: number, zone: string): Promise<Result> {
       sn = 'Obelisk';
       sv = 500005;
       break;
+    case zoneLC.includes('newland'):
+      sn = 'NewLand';
+      sv = 500006;
+      break;
     case zoneLC.includes('chaosoutpost'):
       sn = 'ChaosOutpost';
       sv = 500007;
@@ -32,6 +36,10 @@ export default async function la(id: number, zone: string): Promise<Result> {
     case zoneLC.includes('ironstride'):
       sn = 'IronStride';
       sv = 500008;
+      break;
+    case zoneLC.includes('crystalthornsea'):
+      sn = 'CrystalthornSea';
+      sv = 500009;
       break;
     case zoneLC.includes('fallforest'):
       sn = 'FallForest';
@@ -61,6 +69,10 @@ export default async function la(id: number, zone: string): Promise<Result> {
       sn = 'LevinCity';
       sv = 520005;
       break;
+    case zoneLC.includes('milestone'):
+      sn = 'MileStone';
+      sv = 520006;
+      break;
     case zoneLC.includes('chaoscity'):
       sn = 'ChaosCity';
       sv = 520007;
@@ -72,18 +84,6 @@ export default async function la(id: number, zone: string): Promise<Result> {
     case zoneLC.includes('hopewall'):
       sn = 'HopeWall';
       sv = 520009;
-      break;
-    case zoneLC.includes('newland'):
-      sn = 'NewLand';
-      sv = 500006;
-      break;
-    case zoneLC.includes('crystalthornsea'):
-      sn = 'CrystalthornSea';
-      sv = 500009;
-      break;
-    case zoneLC.includes('milestone'):
-      sn = 'MileStone';
-      sv = 520006;
       break;
     case zoneLC.includes('labyrinthsea'):
       sn = 'LabyrinthSea';
