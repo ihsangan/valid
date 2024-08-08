@@ -1,3 +1,7 @@
+export const endpoint = 'https://order-sg.codashop.com/initPayment.action';
+
+export const allowedMethod = ['GET', 'HEAD'];
+
 export function getUrl(request: Request): URL {
   return new URL(request.url);
 }
@@ -5,8 +9,6 @@ export function getUrl(request: Request): URL {
 export function timeNow(): number {
   return Date.now();
 }
-
-export const endpoint = 'https://order-sg.codashop.com/initPayment.action';
 
 export const headers = new Headers({
   'Content-Type': 'application/x-www-form-urlencoded'

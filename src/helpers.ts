@@ -1,4 +1,4 @@
-import { getUrl, Result } from './utils';
+import { getUrl, Result, allowedMethod } from './utils';
 import callAPI from './routing';
 
 export default async function serveResult(request: Request): Promise<Response> {
@@ -21,7 +21,7 @@ export default async function serveResult(request: Request): Promise<Response> {
     status: code,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, HEAD',
+      'Access-Control-Allow-Methods': allowedMethod.join(', '),
       'Access-Control-Expose-Headers': 'Age, X-Powered-By, X-Response-Time',
       'Age': 0,
       'CF-Cache-Status': 'MISS',
