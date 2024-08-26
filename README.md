@@ -29,6 +29,10 @@ interface Result {
 ```
 # Daftar game
 Berikut adalah daftar game yang didukung oleh API ini.
+### Aether Gazer
+GET `/ag?id=PLAYER_ID`
+
+**Contoh:** [53687200000](https://api.isan.eu.org/nickname/ag?id=53687200000)
 ### Genshin Impact (America, Asia, Europe, SAR) [CENSORED]
 GET `/gi?id=PLAYER_ID`
 
