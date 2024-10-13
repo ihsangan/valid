@@ -8,10 +8,17 @@ export default async function ff(id: number): Promise<Result> {
     body
   });
   const data = await response.json();
-  return {
-    success: true,
-    game: 'Garena Free Fire',
-    id,
-    name: data.confirmationFields.username
-  };
+  if (data.confirmationFields.username) {
+    return {
+      success: true,
+      game: 'Garena Free Fire',
+      id,
+      name: data.confirmationFields.username
+    };
+  } else {
+    return {
+      success: false,
+      message: 'Not found'
+    }
+  }
 }
