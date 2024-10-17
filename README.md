@@ -72,9 +72,7 @@ GET `/sus?id=SPACE_ID`
 ### Valorant
 GET `/valo?id=URISafeRiotIdAndTag`
 
-**Contoh region ID :** [yuyun%23123](https://api.isan.eu.org/nickname/valo?id=yuyun%23123)
-
-**Contoh region non ID :** [Westbourne%23USA](https://api.isan.eu.org/nickname/valo?id=Westbourne%23USA)
+**Contoh:** [yuyun%23123](https://api.isan.eu.org/nickname/valo?id=yuyun%23123)
 ### Zenless Zone Zero (America, Asia, Europe, SAR) [CENSORED]
 GET `/zzz?id=PLAYER_ID`
 
