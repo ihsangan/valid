@@ -21,7 +21,7 @@ export default async function valo(id: number): Promise<Result> {
       success: true,
       game: 'VALORANT',
       id,
-      name: data.confirmationFields.userId
+      name: id
     };
   } else {
     return {

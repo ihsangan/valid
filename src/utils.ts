@@ -18,8 +18,7 @@ export interface Result {
   success: boolean;
   game?: string;
   id?: number | string;
-  zoneId?: number;
-  server?: string,
+  server?: string | number,
   name?: string;
   message?: string;
 }

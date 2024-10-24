@@ -21,8 +21,7 @@ interface Result {
   success: boolean;
   game?: string;
   id?: number | string;
-  zoneId?: number;
-  server?: string,
+  server?: string | number,
   name?: string;
   message?: string;
 }
@@ -46,21 +45,21 @@ GET `/hsr?id=PLAYER_ID`
 
 **Contoh:** [600000001](https://api.isan.eu.org/nickname/hsr?id=600000001)
 ### LifeAfter
-GET `/la?id=PLAYER_ID&zone=SERVER_NAME`
+GET `/la?id=PLAYER_ID&server=SERVER_NAME`
 
 SERVER_NAME bersifat case-insensitive, untuk daftarnya ada [di sini](https://github.com/ihsangan/valid/blob/main/src/router/la.ts).
 
-**Contoh:** [?id=22512309&zone=milestone](https://api.isan.eu.org/nickname/la?id=22512309&zone=milestone)
+**Contoh:** [?id=22512309&server=milestone](https://api.isan.eu.org/nickname/la?id=22512309&server=milestone)
 ### Point Blank
 GET `/pb?id=ZEPETTO_ID`
 
 **Contoh:** [wakwaw55](https://api.isan.eu.org/nickname/pb?id=wakwaw55)
 ### Punishing: Gray Raven (AP, EU, NA)
-GET `/pgr?id=ID&zone=SERVER_ID`
+GET `/pgr?id=ID&server=SERVER_ID`
 
 Case-insensitive, keterangan untuk identifikasi server: AP(Asia-Pasifik), EU(Europe), NA(North America)
 
-**Contoh:** [?id=16746755&zone=AP](https://api.isan.eu.org/nickname/pgr?id=16746755&zone=AP)
+**Contoh:** [?id=16746755&server=AP](https://api.isan.eu.org/nickname/pgr?id=16746755&server=AP)
 ### Sausage Man
 GET `/sm?id=PLAYER_ID`
 
@@ -72,7 +71,9 @@ GET `/sus?id=SPACE_ID`
 ### Valorant
 GET `/valo?id=URISafeRiotIdAndTag`
 
-**Contoh:** [yuyun%23123](https://api.isan.eu.org/nickname/valo?id=yuyun%23123)
+**Contoh region ID :** [yuyun%23123](https://api.isan.eu.org/nickname/valo?id=yuyun%23123)
+
+**Contoh region non ID :** [Westbourne%23USA](https://api.isan.eu.org/nickname/valo?id=Westbourne%23USA)
 ### Zenless Zone Zero (America, Asia, Europe, SAR) [CENSORED]
 GET `/zzz?id=PLAYER_ID`
 
@@ -92,9 +93,9 @@ GET `/ff?id=PLAYER_ID`
 
 **Contoh:** [225009777](https://api.isan.eu.org/nickname/ff?id=225009777)
 ### Mobile Legends: Bang Bang
-GET `/ml?id=PLAYER_ID&zone=ZONE_ID`
+GET `/ml?id=PLAYER_ID&server=ZONE_ID`
 
-**Contoh:** [?id=1114917746&zone=13486](https://api.isan.eu.org/nickname/ml?id=1114917746&zone=13486)
+**Contoh:** [?id=1114917746&server=13486](https://api.isan.eu.org/nickname/ml?id=1114917746&server=13486)
 ## Parameter Opsional
 Kamu dapat menambah parameter `decode` dan mengisi value ke `false` (default ke `true`).
 
@@ -104,11 +105,11 @@ Sementara jika value adalah `true` maka data akan bisa dibaca secara langsung ta
 
 Berikut adalah contoh penggunaan `?decode=false`
 
-[ml?id=1007909047&zone=13044&decode=false](https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=false)
+[ml?id=1007909047&server=13044&decode=false](https://api.isan.eu.org/nickname/ml?id=1007909047&server=13044&decode=false)
 
 Contoh penggunaan `?decode=true`
 
-[ml?id=1007909047&zone=13044&decode=true](https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044&decode=true) atau [ml?id=1007909047&zone=13044](https://api.isan.eu.org/nickname/ml?id=1007909047&zone=13044) (sama saja).
+[ml?id=1007909047&server=13044&decode=true](https://api.isan.eu.org/nickname/ml?id=1007909047&server=13044&decode=true) atau [ml?id=1007909047&server=13044](https://api.isan.eu.org/nickname/ml?id=1007909047&server=13044) (sama saja).
 ## Monitoring
 API monitoring [UptimeRobot](https://stats.uptimerobot.com/s9axzR77Fm)
 # Copyright
