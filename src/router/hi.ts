@@ -8,10 +8,18 @@ export default async function hi(id: number): Promise<Result> {
     body
   });
   const data = await response.json();
-  return {
-    success: true,
-    game: 'Honkai Impact 3rd',
-    id,
-    name: data.confirmationFields.username
-  };
+  if (data.confirmationFields.username) {
+    return {
+      success: true,
+      game: 'Honkai Impact 3rd',
+      id,
+      name: data.confirmationFields.username
+    };
+  }
+  else {
+    return {
+      success: false,
+      message: 'Not found'
+    }
+  }
 }
