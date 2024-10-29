@@ -24,7 +24,7 @@ export default async function gi(id: number): Promise<Result> {
     default:
       return {
         success: false,
-        message: 'Bad request'
+        message: 'Not found'
       };
   }
   const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`;
@@ -34,11 +34,19 @@ export default async function gi(id: number): Promise<Result> {
     body
   });
   const data = await response.json();
-  return {
-    success: true,
-    game: 'Genshin Impact',
-    id,
-    server: sn,
-    name: data.confirmationFields.username
-  };
+  if (data.confirmationFields.username) {
+    return {
+      success: true,
+      game: 'Genshin Impact',
+      id,
+      server: sn,
+      name: data.confirmationFields.username
+    };
+  }
+  else {
+    return {
+      success: false,
+      message: 'Not found'
+    }
+  }
 }

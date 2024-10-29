@@ -24,7 +24,7 @@ export default async function hsr(id: number): Promise<Result> {
     default:
       return {
         success: false,
-        message: 'Bad request',
+        message: 'Not found',
       };
   }
   const body = `voucherPricePoint.id=855316&voucherPricePoint.price=16000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=HONKAI_STAR_RAIL&shopLang=id_ID`;
@@ -34,11 +34,19 @@ export default async function hsr(id: number): Promise<Result> {
     body
   });
   const data = await response.json();
-  return {
-    success: true,
-    game: 'Honkai: Star Rail',
-    id,
-    server: sn,
-    name: data.confirmationFields.username
-  };
+  if (data.confirmationFields.username) {
+    return {
+      success: true,
+      game: 'Honkai: Star Rail',
+      id,
+      server: sn,
+      name: data.confirmationFields.username
+    }
+  }
+  else {
+    return {
+      success: false,
+      message: 'Not found'
+    }
+  }
 }
