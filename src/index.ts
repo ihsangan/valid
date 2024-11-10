@@ -1,7 +1,7 @@
-import checkCache from './handler';
+import checkCache from './handler'
 
 export default {
   async fetch(request: Request): Promise<Response> {
-    return await checkCache(request);
+    return await checkCache(request)
   }
 }
