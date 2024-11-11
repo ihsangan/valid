@@ -6,7 +6,7 @@ export default async function callAPI(request: Request): Promise<Result> {
   const path = url.pathname
   const params = url.searchParams
   const id = params.get('id')
-  const zone = params.get('zone') || params.get('server')
+  const server = params.get('zone') || params.get('server')
   if (!id) {
     return {
       success: false,
@@ -14,60 +14,43 @@ export default async function callAPI(request: Request): Promise<Result> {
     }
   }
   try {
-    let result: Result
     switch (true) {
       case path.includes('/ag'):
-        result = await router.ag(Number(id))
-        break
+        return await router.ag(Number(id))
       case path.includes('/aov'):
-        result = await router.aov(Number(id))
-        break
+        return await router.aov(Number(id))
       case path.includes('/cod'):
-        result = await router.cod(Number(id))
-        break
+        return await router.cod(Number(id))
       case path.includes('/ff'):
-        result = await router.ff(Number(id))
-        break
+        return await router.ff(Number(id))
       case path.includes('/gi'):
-        result = await router.gi(Number(id))
-        break
+        return await router.gi(Number(id))
       case path.includes('/hi'):
-        result = await router.hi(Number(id))
-        break
+        return await router.hi(Number(id))
       case path.includes('/hsr'):
-        result = await router.hsr(Number(id))
-        break
+        return await router.hsr(Number(id))
       case path.includes('/la'):
-        result = await router.la(Number(id), zone)
-        break
+        return await router.la(Number(id), server)
       case path.includes('/ml'):
-        result = await router.ml(Number(id), Number(zone))
-        break
+        return await router.ml(Number(id), Number(server))
       case path.includes('/pb'):
-        result = await router.pb(id)
-        break
+        return await router.pb(id)
       case path.includes('/pgr'):
-        result = await router.pgr(Number(id), zone)
-        break
+        return await router.pgr(Number(id), server)
       case path.includes('/sm'):
-        result = await router.sm(id)
-        break
+        return await router.sm(id)
       case path.includes('/sus'):
-        result = await router.sus(Number(id))
-        break
+        return await router.sus(Number(id))
       case path.includes('/valo'):
-        result = await router.valo(id)
-        break
+        return await router.valo(id)
       case path.includes('/zzz'):
-        result = await router.zzz(Number(id))
-        break
+        return await router.zzz(Number(id))
       default:
-        result = {
+        return {
           success: false,
           message: 'Bad request'
         }
     }
-    return result
   } catch (error) {
     return {
       success: false,
