@@ -50,6 +50,10 @@ GET `/la?id=PLAYER_ID&server=SERVER_NAME`
 SERVER_NAME bersifat case-insensitive, untuk daftarnya ada [di sini](https://github.com/ihsangan/valid/blob/main/src/router/la.ts).
 
 **Contoh:** [?id=22512309&server=milestone](https://api.isan.eu.org/nickname/la?id=22512309&server=milestone)
+### Love and Deepspace
+GET `/ld?id=Hunter_ID`
+
+**Contoh:** [81001445172](https://api.isan.eu.org/nickname/ld?id=81001445172)
 ### Point Blank
 GET `/pb?id=ZEPETTO_ID`
 
