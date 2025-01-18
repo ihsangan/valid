@@ -14,6 +14,17 @@ export const headers = new Headers({
   'Content-Type': 'application/x-www-form-urlencoded'
 })
 
+export async function hitCoda(body) {
+  const response = await fetch('https://order-sg.codashop.com/initPayment.action', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body
+  })
+  return await response.json()
+}
+
 export interface Result {
   success: boolean
   game?: string
