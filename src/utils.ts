@@ -1,5 +1,3 @@
-export const endpoint = 'https://order-sg.codashop.com/initPayment.action'
-
 export const allowedMethod = ['GET', 'HEAD']
 
 export function getUrl(request: Request): URL {
@@ -10,11 +8,7 @@ export function timeNow(): number {
   return Date.now()
 }
 
-export const headers = new Headers({
-  'Content-Type': 'application/x-www-form-urlencoded'
-})
-
-export async function hitCoda(body) {
+export async function hitCoda(body: string): Promise<unknown> {
   const response = await fetch('https://order-sg.codashop.com/initPayment.action', {
     method: 'POST',
     headers: {

@@ -1,4 +1,4 @@
-import { endpoint, headers, Result } from '../utils'
+import { hitCoda, Result } from '../utils'
 
 export default async function la(id: number, zone: string): Promise<Result> {
   const zoneLC = zone.toLowerCase()
@@ -96,12 +96,7 @@ export default async function la(id: number, zone: string): Promise<Result> {
       }
   }
   const body = `voucherPricePoint.id=45713&voucherPricePoint.price=15000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=NETEASE_LIFEAFTER&shopLang=id_ID`
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers,
-    body
-  })
-  const data = await response.json()
+  const data = await hitCoda(body)
   return {
     success: true,
     game: 'LifeAfter',

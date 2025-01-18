@@ -1,4 +1,4 @@
-import { endpoint, headers, Result } from '../utils'
+import { hitCoda, Result } from '../utils'
 
 export default async function pgr(id: number, zone: string): Promise<Result> {
   let sn = ''
@@ -23,12 +23,7 @@ export default async function pgr(id: number, zone: string): Promise<Result> {
       }
   }
   const body = `voucherPricePoint.id=259947&voucherPricePoint.price=15000&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=PUNISHING_GRAY_RAVEN&shopLang=id_ID`
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers,
-    body
-  })
-  const data = await response.json()
+  const data = await hitCoda(body)
   return {
     success: true,
     game: 'Punishing: Gray Raven',

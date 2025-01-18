@@ -1,13 +1,8 @@
-import { endpoint, headers, Result } from '../utils'
+import { hitCoda, Result } from '../utils'
 
 export default async function gameName(id: string): Promise<Result> {
   const body = `` 
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers,
-    body
-  })
-  const data = await response.json()
+  const data = await hitCoda(body)
   return {
     success: true,
     game: '',
