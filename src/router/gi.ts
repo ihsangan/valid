@@ -1,8 +1,8 @@
 import { hitCoda, Result } from '../utils'
 
 export default async function gi(id: number): Promise<Result> {
-  let sn = ''
-  let sv = ''
+  let sn
+  let sv
   const idStr = id.toString()
   switch (idStr[0]) {
     case '6':
