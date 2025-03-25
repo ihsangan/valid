@@ -33,6 +33,8 @@ export default async function callAPI(request: Request): Promise<Result> {
         return await router.la(Number(id), server)
       case path.includes('/ld'):
         return await router.lad(Number(id))
+      case path.includes('/mcgg'):
+        return await router.mcgg(Number(id), Number(server))
       case path.includes('/ml'):
         return await router.ml(Number(id), Number(server))
       case path.includes('/pb'):
