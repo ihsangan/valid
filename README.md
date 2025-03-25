@@ -54,6 +54,10 @@ SERVER_NAME bersifat case-insensitive, untuk daftarnya ada [di sini](https://git
 GET `/ld?id=Hunter_ID`
 
 **Contoh:** [81001445172](https://api.isan.eu.org/nickname/ld?id=81001445172)
+### Magic Chess: Go Go
+GET `/mcgg?id=PLAYER_ID&server=ZONE_ID`
+
+**Contoh:** [?id=10100&server=1001](https://api.isan.eu.org/nickname/mcgg?id=10100&server=1001)
 ### Point Blank
 GET `/pb?id=ZEPETTO_ID`
 

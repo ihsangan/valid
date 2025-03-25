@@ -1,8 +1,8 @@
 import { hitCoda, Result } from '../utils'
 
 export default async function pgr(id: number, zone: string): Promise<Result> {
-  let sn = ''
-  let sv = ''
+  let sn
+  let sv
   switch (zone.toLowerCase()) {
     case 'ap':
       sn = 'Asia-Pacific'

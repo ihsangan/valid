@@ -2,8 +2,8 @@ import { hitCoda, Result } from '../utils'
 
 export default async function la(id: number, zone: string): Promise<Result> {
   const zoneLC = zone.toLowerCase()
-  let sn = ''
-  let sv = 0
+  let sn
+  let sv
   switch (true) {
     case zoneLC.includes('miskatown'):
       sn = 'MiskaTown'

@@ -1,8 +1,8 @@
 import { hitCoda, Result } from '../utils'
 
 export default async function zzz(id: number): Promise<Result> {
-  let sn = ''
-  let sv = ''
+  let sn
+  let sv
   const idStr = id.toString().substring(0, 2)
   switch (idStr) {
     case '10':
