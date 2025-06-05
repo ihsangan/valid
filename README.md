@@ -1,4 +1,4 @@
-# Nickname Validator
+# Nickname Validator (@ihsangan/valid)
 API ini dibuat untuk mencari nickname in-game menggunakan ID player, data dari API ini diambil dari [Codashop](https://www.codashop.com/).
 
 Awal bermula nya projek ini saat saya mengunjungi web phising yang menggunakan sistem validasi ID pada situsnya (ironis, padahal masih bayak web topup yang belum implementasi beginian), jadi kalo ID nya tidak valid maka data tidak bisa disubmit.
@@ -28,10 +28,6 @@ interface Result {
 ```
 # Daftar game
 Berikut adalah daftar game yang didukung oleh API ini.
-### Aether Gazer
-GET `/ag?id=PLAYER_ID`
-
-**Contoh:** [53687200000](https://api.isan.eu.org/nickname/ag?id=53687200000)
 ### Genshin Impact (America, Asia, Europe, SAR) [CENSORED]
 GET `/gi?id=PLAYER_ID`
 
@@ -92,10 +88,10 @@ Dibawah ini adalah daftar game yang hanya bisa dipakai menggunakan ID yang terda
 GET `/aov?id=PLAYER_OR_OPEN_ID`
 
 **Contoh:** [124590895269021](https://api.isan.eu.org/nickname/aov?id=124590895269021)
-### Call Of Duty
+### Call Of Duty Mobile
 GET `/cod?id=PLAYER_OR_OPEN_ID`
 
-**Contoh:** [243402956362890880](https://api.isan.eu.org/nickname/cod?id=243402956362890880)
+**Contoh:** [243402956362890880](https://api.isan.eu.org/nickname/codm?id=243402956362890880)
 ### Free Fire
 GET `/ff?id=PLAYER_ID`
 

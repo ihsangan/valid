@@ -1,6 +1,5 @@
-export { default as ag } from './ag'
 export { default as aov } from './aov'
-export { default as cod } from './cod'
+export { default as codm } from './codm'
 export { default as ff } from './ff'
 export { default as gi } from './gi'
 export { default as hi } from './hi'

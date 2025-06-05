@@ -15,11 +15,9 @@ export default async function callAPI(request: Request): Promise<Result> {
   }
   try {
     switch (true) {
-      case path.includes('/ag'):
-        return await router.ag(Number(id))
       case path.includes('/aov'):
         return await router.aov(Number(id))
-      case path.includes('/cod'):
+      case path.includes('/codm'):
         return await router.cod(Number(id))
       case path.includes('/ff'):
         return await router.ff(Number(id))
