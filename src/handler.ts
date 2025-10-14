@@ -19,7 +19,8 @@ export default async function checkCache(request: Request): Promise<Response> {
     })
   }
   let cache = caches.default
-  let response = await cache.match(request.url)
+  let response = await cache.match(request.url, {
+    ignoreMethod: false })
   if (!response) {
     response = await serveResult(request)
     await cache.put(request.url, response.clone())
