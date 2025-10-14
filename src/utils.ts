@@ -1,4 +1,4 @@
-export const allowedMethod = ['GET', 'HEAD']
+export const allowedMethod = ['GET', 'HEAD', 'POST']
 
 export function getUrl(request: Request): URL {
   return new URL(request.url)
