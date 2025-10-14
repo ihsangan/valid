@@ -19,11 +19,10 @@ export default async function checkCache(request: Request): Promise<Response> {
     })
   }
   let cache = caches.default
-  let response = await cache.match(request.url, {
-    ignoreMethod: false })
+  let response = await cache.match(request)
   if (!response) {
     response = await serveResult(request)
-    await cache.put(request.url, response.clone())
+    await cache.put(request, response.clone())
   }
   response = new Response(response.body, response)
   response.headers.set('X-Response-Time', timeNow() - now)
