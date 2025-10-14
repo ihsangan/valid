@@ -1,12 +1,10 @@
-import { getUrl, Result } from './utils'
+import { getUrl, parseRequest, Result } from './utils'
 import * as router from './router'
 
 export default async function callAPI(request: Request): Promise<Result> {
   const url = getUrl(request)
   const path = url.pathname
-  const params = url.searchParams
-  const id = params.get('id')
-  const server = params.get('zone') || params.get('server')
+  const { id, server } = await parseRequest(request)
   if (!id) {
     return {
       success: false,
