@@ -4,7 +4,7 @@ import serveResult from './helpers'
 export default async function checkCache(request: Request): Promise<Response> {
   const now = timeNow()
   if (allowedMethod.indexOf(request.method) === -1) {
-    return new Response.json({
+    return Response.json({
       success: false,
       message: 'Method not allowed'
     }, {
