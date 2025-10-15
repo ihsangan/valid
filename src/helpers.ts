@@ -17,16 +17,14 @@ export default async function serveResult(url: string): Promise<Response> {
   if (result.message === 'Not found') {
     status = 404
   }
-  const response = new Response(JSON.stringify(result), {
+  return Response.json(result, {
     status,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': allowedMethod.join(', '),
       'Access-Control-Expose-Headers': '*',
       'Cache-Control': 'public, max-age=30, s-maxage=30, proxy-revalidate, immutable',
-      'Content-Type': 'application/json; charset=utf-8',
       'X-Powered-By': '@ihsangan/valid'
     }
   })
-  return response
 }

@@ -25,7 +25,6 @@ export default async function checkCache(request: Request): Promise<Response> {
     response = await serveResult(url)
     await cache.put(url, response.clone())
   }
-  response = new Response(response.body, response)
   response.headers.set('X-Response-Time', timeNow() - now)
   return response
 }
