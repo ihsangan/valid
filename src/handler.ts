@@ -4,16 +4,15 @@ import serveResult from './helpers'
 export default async function checkCache(request: Request): Promise<Response> {
   const now = timeNow()
   if (allowedMethod.indexOf(request.method) === -1) {
-    return new Response(JSON.stringify({
+    return new Response.json({
       success: false,
       message: 'Method not allowed'
-    }), {
+    }, {
       status: 405,
       headers: {
         'Allow': allowedMethod.join(', '),
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': allowedMethod.join(', '),
-        'Content-Type': 'application/json; charset=utf-8',
         'X-Powered-By': '@ihsangan/valid'
       }
     })
