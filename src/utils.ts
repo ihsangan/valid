@@ -1,7 +1,7 @@
 export const allowedMethod = ['GET', 'HEAD', 'POST']
 
-export function getUrl(request: Request): URL {
-  return new URL(request.url)
+export function getUrl(request: Request | string): URL {
+  return new URL(request.url || request)
 }
 
 export function timeNow(): number {
