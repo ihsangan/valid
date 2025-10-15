@@ -3,7 +3,7 @@ import callAPI from './routing'
 
 export default async function serveResult(url: string): Promise<Response> {
   const dc = getUrl(url).searchParams.get('decode')
-  let code = 200
+  let status = 200
   let result: Result = await callAPI(url)
   if (result.name) {
     result.name = result.name.replace(/\u002B/g, '%20')
@@ -12,13 +12,13 @@ export default async function serveResult(url: string): Promise<Response> {
     }
   }
   if (result.message === 'Bad request') {
-    code = 400
+    status = 400
   }
   if (result.message === 'Not found') {
-    code = 404
+    status = 404
   }
   const response = new Response(JSON.stringify(result), {
-    status: code,
+    status,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': allowedMethod.join(', '),
