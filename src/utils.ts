@@ -8,7 +8,8 @@ export function timeNow(): number {
   return Date.now()
 }
 
-export async function parseRequest(request: Request): Promise<{ id: string | null; server: string | null }> {
+export async function parseRequest(request: Request): Promise<string> {
+  let url = getUrl(request)
   if (request.method === 'POST') {
     const contentType = request.headers.get('content-type')
     let data: { [key: string]: string | null } = {}
@@ -21,22 +22,17 @@ export async function parseRequest(request: Request): Promise<{ id: string | nul
           data[key] = value
         }
       } else {
-        return { id: null, server: null }
+        return url.toString()
       }
-      return {
-        id: data.id || null,
-        server: data.zone || data.server || null,
+      for (const key in data) {
+        url.searchParams.set(key, data[key])
       }
+      return url.toString()
     } catch (error) {
-      return { id: null, server: null }
+      return url.toString()
     }
   }
-  const url = getUrl(request)
-  const params = url.searchParams
-  return {
-    id: params.get('id') || null,
-    server: params.get('zone') || params.get('server') || null,
-  }
+  return url.toString()
 }
 
 export async function hitCoda(body: string): Promise<unknown> {

@@ -1,4 +1,4 @@
-import { allowedMethod, timeNow } from './utils'
+import { allowedMethod, parseRequest, timeNow } from './utils'
 import serveResult from './helpers'
 
 export default async function checkCache(request: Request): Promise<Response> {
@@ -18,11 +18,12 @@ export default async function checkCache(request: Request): Promise<Response> {
       }
     })
   }
+  let url = await parseRequest(request)
   let cache = caches.default
-  let response = await cache.match(request)
+  let response = await cache.match(url)
   if (!response) {
-    response = await serveResult(request)
-    await cache.put(request, response.clone())
+    response = await serveResult(url)
+    await cache.put(url, response.clone())
   }
   response = new Response(response.body, response)
   response.headers.set('X-Response-Time', timeNow() - now)
