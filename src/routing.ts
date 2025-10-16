@@ -4,11 +4,11 @@ import * as router from './router'
 export default async function callAPI(url: string): Promise<Result> {
   const requestUrl = getUrl(url)
   const path = requestUrl.pathname
-  const params = requestUrl.searchParams
+  //const params = requestUrl.searchParams
   //const id = params.get('id')
   //const server = params.get('server') || params.get('zone')
-  const { id, server } = getParams(url)
-  if (!id) {
+  const params = getParams(url)
+  if (!params.id) {
     return {
       success: false,
       message: 'Bad request' 
@@ -21,7 +21,7 @@ export default async function callAPI(url: string): Promise<Result> {
       case path.includes('/codm'):
         return await router.codm(Number(id))
       case path.includes('/ff'):
-        return await router.ff(Number(id))
+        return await router.ff(Number(params.id))
       case path.includes('/gi'):
         return await router.gi(Number(id))
       case path.includes('/hi'):
