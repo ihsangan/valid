@@ -39,7 +39,7 @@ export async function getParams(inputUrl: string): Params {
   const url = getUrl(inputUrl)
   const urlParams = url.searchParams
   const params: Params = {
-    path = url.pathname
+    path: url.pathname
   }
   for (const [key, value] of urlParams.entries()) {
     params[key] = value
