@@ -35,10 +35,10 @@ export async function parseRequest(request: Request): Promise<string> {
   return url.toString()
 }
 
-export function getParams(inputUrl: string): Record<string, string> {
+export function getParams(inputUrl: string): Params {
   const url = new URL(inputUrl)
   const urlParams = url.searchParams
-  const params: Record<string, string> = {
+  const params: Params = {
     path: url.pathname
   }
   for (const [key, value] of urlParams.entries()) {
@@ -62,6 +62,7 @@ interface Params{
   path: string
   id?: string
   server?: string
+  zone?: string
   decode?: string
 }
 

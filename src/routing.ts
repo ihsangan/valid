@@ -1,17 +1,13 @@
-import { getParams, getUrl, Result } from './utils'
+import { getParams, Result } from './utils'
 import * as router from './router'
 
 export default async function callAPI(url: string): Promise<Result> {
-  const requestUrl = getUrl(url)
-  const path = requestUrl.pathname
-  //const params = requestUrl.searchParams
-  //const id = params.get('id')
-  //const server = params.get('server') || params.get('zone')
-  const params = getParams(url)
-  if (!params.id) {
+  let { path, id, server, zone} = getParams(url)
+  server = server || zone
+  if (id) {
     return {
       success: false,
-      message: JSON.stringify(params)
+      message: 'Bad request'
     }
   }
   try {
@@ -21,7 +17,7 @@ export default async function callAPI(url: string): Promise<Result> {
       case path.includes('/codm'):
         return await router.codm(Number(id))
       case path.includes('/ff'):
-        return await router.ff(Number(params.id))
+        return await router.ff(Number(id))
       case path.includes('/gi'):
         return await router.gi(Number(id))
       case path.includes('/hi'):
