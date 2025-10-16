@@ -11,7 +11,7 @@ export default async function callAPI(url: string): Promise<Result> {
   if (!params.id) {
     return {
       success: false,
-      message: 'Bad request' 
+      message: params
     }
   }
   try {
