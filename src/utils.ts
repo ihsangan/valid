@@ -35,6 +35,18 @@ export async function parseRequest(request: Request): Promise<string> {
   return url.toString()
 }
 
+export async function getParams(inputUrl: string): Params {
+  const url = getUrl(inputUrl)
+  const urlParams = url.searchParams
+  const params: Params = {
+    path = url.pathname
+  }
+  for (const [key, value] of urlParams.entries()) {
+    params[key] = value
+  }
+  return params
+}
+
 export async function hitCoda(body: string): Promise<unknown> {
   const response = await fetch('https://order-sg.codashop.com/initPayment.action', {
     method: 'POST',
@@ -46,11 +58,18 @@ export async function hitCoda(body: string): Promise<unknown> {
   return await response.json()
 }
 
+interface Params{
+  path: string
+  id?: string
+  server?: string
+  decode?: string
+}
+
 export interface Result {
   success: boolean
   game?: string
   id?: number | string
-  server?: string | number,
+  server?: string | number
   name?: string
   message?: string
 }
