@@ -4,7 +4,7 @@ import * as router from './router'
 export default async function callAPI(url: string): Promise<Result> {
   let { path, id, server, zone} = getParams(url)
   server = server || zone
-  if (id) {
+  if (!id) {
     return {
       success: false,
       message: 'Bad request'
