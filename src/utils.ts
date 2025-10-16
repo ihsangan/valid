@@ -35,7 +35,7 @@ export async function parseRequest(request: Request): Promise<string> {
   return url.toString()
 }
 
-export async function getParams(inputUrl: string): Record<string, string> {
+export function getParams(inputUrl: string): Record<string, string> {
   const url = new URL(inputUrl)
   const urlParams = url.searchParams
   const params: Record<string, string> = {
