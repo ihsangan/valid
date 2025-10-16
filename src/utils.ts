@@ -35,10 +35,10 @@ export async function parseRequest(request: Request): Promise<string> {
   return url.toString()
 }
 
-export async function getParams(inputUrl: string): Params {
-  const url = getUrl(inputUrl)
+export async function getParams(inputUrl: string): Record<string, string> {
+  const url = new URL(inputUrl)
   const urlParams = url.searchParams
-  const params: Params = {
+  const params: Record<string, string> = {
     path: url.pathname
   }
   for (const [key, value] of urlParams.entries()) {
