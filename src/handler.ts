@@ -13,8 +13,7 @@ export default async function checkCache(request: Request): Promise<Response> {
         'Allow': allowedMethod.join(', '),
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': allowedMethod.join(', '),
-        'X-Powered-By': '@ihsangan/valid',
-        'X-Response-Time': timeNow() - now
+        'X-Powered-By': '@ihsangan/valid'
       }
     })
   }

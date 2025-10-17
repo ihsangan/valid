@@ -1,13 +1,13 @@
-import { getUrl, Result, allowedMethod } from './utils'
+import { getParams, Result, allowedMethod } from './utils'
 import callAPI from './routing'
 
 export default async function serveResult(url: string): Promise<Response> {
-  const dc = getUrl(url).searchParams.get('decode')
+  const { decode } = getParams(url)
   let status = 200
   let result: Result = await callAPI(url)
   if (result.name) {
     result.name = result.name.replace(/\u002B/g, '%20')
-    if (dc === null || dc === 'true' || dc !== 'false') {
+    if (decode === null || decode === 'true' || decode !== 'false') {
       result.name = decodeURIComponent(result.name)
     }
   }

@@ -1,15 +1,11 @@
 export const allowedMethod = ['GET', 'HEAD', 'POST']
 
-export function getUrl(request: Request | string): URL {
-  return new URL(request.url || request)
-}
-
 export function timeNow(): number {
   return Date.now()
 }
 
 export async function parseRequest(request: Request): Promise<string> {
-  let url = getUrl(request)
+  let url = new URL(request)
   if (request.method === 'POST') {
     const contentType = request.headers.get('content-type')
     let data: { [key: string]: string | null } = {}
