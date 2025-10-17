@@ -5,7 +5,7 @@ export function timeNow(): number {
 }
 
 export async function parseRequest(request: Request): Promise<string> {
-  let url = new URL(request)
+  let url = new URL(request.url)
   if (request.method === 'POST') {
     const contentType = request.headers.get('content-type')
     let data: { [key: string]: string | null } = {}
