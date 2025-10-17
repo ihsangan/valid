@@ -23,7 +23,7 @@ export default async function serveResult(url: string): Promise<Response> {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': allowedMethod.join(', '),
       'Access-Control-Expose-Headers': '*',
-      'Cache-Control': 'public, max-age=30, s-maxage=30',
+      'Cache-Control': 'public, max-age=30, s-maxage=43200, proxy-revalidate, immutable',
       'X-Powered-By': '@ihsangan/valid'
     }
   })
