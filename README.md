@@ -14,8 +14,35 @@ Kamu bisa langsung fork aja repo ini, atau bisa tekan tombol dibawah ini (jangan
 ```
 https://api.isan.eu.org/nickname
 ```
+## Metode Request
+API ini mendukung metode GET dan POST.
+1.  Metode GET
+
+Anda dapat mengirimkan parameter langsung melalui URL.
+```
+/ml?id=1114917746&server=13486
+```
+2. Metode POST
+
+Anda juga dapat mengirimkan data melalui body request dengan `Content-Type` berupa `application/json` atau `application/x-www-form-urlencoded`. Ini berguna untuk menyembunyikan parameter dari URL.
+
+Contoh (`application/json`):
+```sh
+curl -X POST 'https://api.isan.eu.org/nickname/ml' \
+-H 'Content-Type: application/json' \
+-d '{
+    "id": "1114917746",
+    "server": "13486"
+}'
+```
+Contoh (`application/x-www-form-urlencoded`):
+```sh
+curl -X POST 'https://api.isan.eu.org/nickname/ml' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'id=1114917746&server=13486'
+```
 ## Output
-application/json; charset=utf-8 ([RFC4627](https://datatracker.ietf.org/doc/html/rfc4627))
+application/json ([RFC4627](https://datatracker.ietf.org/doc/html/rfc4627))
 ```ts
 interface Result {
   success: boolean;
@@ -117,4 +144,4 @@ Contoh penggunaan `?decode=true`
 ## Monitoring
 API monitoring [UptimeRobot](https://stats.uptimerobot.com/s9axzR77Fm)
 # Copyright
-© Projek ini dibawah lisensi: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), tidak terafiliasi dengan Codashop.
+© Projek ini dibawah lisensi: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), tidak terafiliasi dengan Codashop.
