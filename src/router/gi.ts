@@ -4,28 +4,29 @@ export default async function gi(id: number): Promise<Result> {
   let sn
   let sv
   const idStr = id.toString()
-  switch (idStr[0]) {
-    case '6':
-      sn = 'America'
-      sv = 'os_usa'
-      break
-    case '7':
-      sn = 'Europe'
-      sv = 'os_euro'
-      break
-    case '8':
-      sn = 'Asia'
-      sv = 'os_asia'
-      break
-    case '9':
-      sn = 'SAR (Taiwan, Hong Kong, Macao)'
-      sv = 'os_cht'
-      break
-    default:
-      return {
-        success: false,
-        message: 'Not found'
-      }
+  if (idStr.startsWith('18') || idStr[0] === '8') {
+    sn = 'Asia'
+    sv = 'os_asia'
+  } else {
+    switch (idStr[0]) {
+      case '6':
+        sn = 'America'
+        sv = 'os_usa'
+        break
+      case '7':
+        sn = 'Europe'
+        sv = 'os_euro'
+        break
+      case '9':
+        sn = 'SAR (Taiwan, Hong Kong, Macao)'
+        sv = 'os_cht'
+        break
+      default:
+        return {
+          success: false,
+          message: 'Not found'
+        }
+    }
   }
   const body = `voucherPricePoint.id=116054&voucherPricePoint.price=16500&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${sv}&voucherTypeName=GENSHIN_IMPACT&shopLang=id_ID`
   const data = await hitCoda(body)
