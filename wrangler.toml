@@ -1,6 +1,7 @@
-name = "validator"
+name = "nickname-checker"
 main = "./src/index.ts"
 workers_dev = true
 compatibility_date = "2025-01-01"
+
 [observability]
 enabled = true
