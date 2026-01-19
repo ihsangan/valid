@@ -17,8 +17,8 @@ export default async function checkCache(request: Request): Promise<Response> {
       }
     })
   }
-  let url = await parseRequest(request)
-  let cache = caches.default
+  const url = await parseRequest(request)
+  const cache = caches.default
   let response = await cache.match(url)
   if (!response) {
     response = await serveResult(url)
