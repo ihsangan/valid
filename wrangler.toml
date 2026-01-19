@@ -1,6 +1,6 @@
 name = "validator"
 main = "./src/index.ts"
 workers_dev = true
-compatibility_date = "2025-01-01"
+compatibility_date = "2026-01-01"
 [observability]
 enabled = true

@@ -5,30 +5,30 @@ export function timeNow(): number {
 }
 
 export async function parseRequest(request: Request): Promise<string> {
-  let url = new URL(request.url)
+  const url = new URL(request.url)
   if (request.method === 'POST') {
     const contentType = request.headers.get('content-type')
     let data: { [key: string]: string | null } = {}
     try {
-      if (contentType && contentType.includes('application/json')) {
+      if (contentType.includes('application/json')) {
         data = await request.json()
-      } else if (contentType && contentType.includes('application/x-www-form-urlencoded')) {
+      } else if (contentType.includes('application/x-www-form-urlencoded')) {
         const formData = await request.formData()
         for (const [key, value] of formData.entries()) {
           data[key] = value
         }
       } else {
-        return url.toString()
+        return url.href
       }
       for (const key in data) {
         url.searchParams.set(key, data[key])
       }
-      return url.toString()
+      return url.href
     } catch (error) {
-      return url.toString()
+      return url.href
     }
   }
-  return url.toString()
+  return url.href
 }
 
 export function getParams(inputUrl: string): Params {
