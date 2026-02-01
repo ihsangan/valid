@@ -1,12 +1,13 @@
 import { hitCoda, Result } from '../utils'
 
 export default async function codm(id: number): Promise<Result> {
-  const body = `voucherPricePoint.id=1032849&voucherPricePoint.price=11100&voucherPricePoint.variablePrice=0&user.userId=${id}&voucherTypeName=CALL_OF_DUTY%3AMOBILE&shopLang=id_ID`
+  const body = `user.userId=${id}&voucherPricePoint.id=46129&voucherPricePoint.price=10000&shopLang=id_ID&voucherTypeName=CALL_OF_DUTY`
   const data = await hitCoda(body)
   return {
     success: true,
     game: 'Call Of Duty Mobile',
     id,
-    name: data.confirmationFields.username
+    name: data.confirmationFields.roles[0].role,
+    server: data.confirmationFields.roles[0].server
   }
 }
