@@ -1,8 +1,13 @@
-import { hitCoda, Result } from '../utils'
+import { hitVoca, Result } from '../utils'
 
-export default async function ml(id: number, zone: number): Promise<Result> {
-  const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
-  const data = await hitCoda(body)
+export default async function ml(id: string, zone: string): Promise<Result> {
+  const payload = {
+    shop_code: "MOBILE_LEGENDS",
+    data: {
+      user_id: id,
+      zone_id: zone
+  }}
+  const data = await hitVoca(JSON.stringify(payload))
   return {
     success: true,
     game: 'Mobile Legends: Bang Bang',

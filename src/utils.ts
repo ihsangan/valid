@@ -54,6 +54,18 @@ export async function hitCoda(body: string): Promise<unknown> {
   return await response.json()
 }
 
+export async function hitVoca(body: string): Promise<unknown> {
+  const response = await fetch('https://api-gw-prd.vocagame.com/gateway-ms/order/v1/client/transactions/verify', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'x-country': 'sg'
+    },
+    body
+  })
+  return await response.json()
+}
+
 interface Params{
   path: string
   id?: string
