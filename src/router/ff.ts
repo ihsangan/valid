@@ -1,14 +1,12 @@
-import { hitCoda, Result } from '../utils'
+import { Result } from '../utils'
 
 export default async function ff(id: number): Promise<Result> {
-  const jwt1 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInNrdUlkXCI6XCJJRFJfMTAwMDBcIixcImV2ZW50UGFja2FnZVwiOlwiMFwiLFwiZGVub21JbWFnZVVybFwiOlwiXCIsXCJkZW5vbU5hbWVcIjpcIjcwIERpYW1vbmRzXCIsXCJkZW5vbUNhdGVnb3J5TmFtZVwiOlwiXCIsXCJ0YWdzXCI6W10sXCJjb3VudHJ5Mk5hbWVcIjpcIklEXCIsXCJsdnRJZFwiOjIxNyxcImRlZmF1bHRQcmljZVwiOjAuMCxcImRlZmF1bHRDdXJyZW5jeVwiOlwiXCIsXCJhZGRpdGlvbmFsSW5mb1wiOntcIkxveWFsdHlDdXJyZW5jeURldGFpbFwiOlwie1xcXCJwcmljaW5nU2NoZW1lXFxcIjpcXFwicGFpZF9jdXJyZW5jeVxcXCIsXFxcImxveWFsdHlFYXJuZWRBbW91bnRcXFwiOjAuMCxcXFwibG95YWx0eUJ1cm5lZEFtb3VudFxcXCI6MC4wfVwifX0iLCJpYXQiOjE3NzA1MzI0OTUsImV4cCI6MTc3MDc5MTY5NX0.U4tq_7VprYxF84ANlXP8wAOTH0-1umHnL1Ml0f9yZFI'
-  const jwt2 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkeW5hbWljU2t1SW5mbyI6IntcInBjSWRcIjoyMjcsXCJwY05hbWVcIjpcIkdPX1BBWVwiLFwicHJpY2VcIjoxMDAwMC4wLFwiY3VycmVuY3lcIjpcIklEUlwiLFwiYXBpUHJpY2VcIjoxMDAwMC4wLFwiYXBpUHJpY2VDdXJyZW5jeVwiOlwiSURSXCIsXCJkaXNjb3VudFByaWNlXCI6MTAwMDAuMCxcInByaWNlQmVmb3JlVGF4XCI6MTAwMDAuMCxcInRheEFtb3VudFwiOjAuMCxcInNrdUlkXCI6XCJJRFJfMTAwMDBcIixcImx2dElkXCI6MjE3LFwic3BvbnNvcmVkUHJvbW9JZFwiOm51bGx9IiwiaWF0IjoxNzcwNTMyNDk1LCJleHAiOjE3NzA3OTE2OTV9.JK4yGzMY4iLPkclzn1QeabfxaIuW_vOH5yig0X5OWaU'
-  const body = `user.userId=${id}&voucherPricePoint.price=10000&lvtId=217&shopLang=id_ID&voucherTypeName=FREEFIRE&dynamicSkuToken=${jwt1}&pricePointDynamicSkuToken=${jwt2}`
-  const data = await hitCoda(body)
+  const request = await fetch(`https://gopay.co.id/games/v1/order/prepare/FREEFIRE?userId=${id}`)
+  const data = await request.json()
   return {
     success: true,
     game: 'Garena Free Fire',
     id,
-    name: data.confirmationFields.username
+    name: data.data
   }
 }
