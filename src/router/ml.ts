@@ -2,17 +2,17 @@ import { Result } from '../utils'
 
 export default async function ml(user_id: string, zone_id: string): Promise<Result> {
   const payload = {
-    shop_code: 'MOBILE_LEGENDS',
+    code: 'MOBILE_LEGENDS',
     data: {
-      user_id,
-      zone_id
+      userId: user_id,
+      zoneId: zone_id
     }
   }
-  const result = await fetch('https://api-gw-prd.vocagame.com/gateway-ms/order/v1/client/transactions/verify', {
+  const result = await fetch('https://gopay.co.id/games/v1/order/user-account', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'x-country': '1'
+      //'x-country': '1'
     },
     body: JSON.stringify(payload)
   })
