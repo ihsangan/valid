@@ -23,6 +23,6 @@ export default async function ml(user_id: string, zone_id: string): Promise<Resu
     game: 'Mobile Legends: Bang Bang',
     id,
     server: zone,
-    name: data.data.username
+    name: data
   }
 }
