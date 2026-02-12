@@ -4,3 +4,5 @@ workers_dev = true
 compatibility_date = "2026-01-01"
 [observability]
 enabled = true
+[placement]
+region = "aws:ap-southeast-2"
