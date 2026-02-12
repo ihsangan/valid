@@ -11,7 +11,7 @@ export default async function ml(user_id: string, zone_id: string): Promise<Resu
   const result = await fetch('https://api-gw-prd.vocagame.com/gateway-ms/order/v1/client/transactions/verify', {
     method: 'POST',
     headers: {
-      'content-type': 'apllication/json',
+      'content-type': 'application/json',
       'x-country': '1'
     },
     body: JSON.stringify(payload)
