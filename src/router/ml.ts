@@ -14,7 +14,7 @@ export default async function ml(user_id: string, zone_id: string): Promise<Resu
       'content-type': 'application/json',
       //'x-country': '1'
     },
-    body: JSON.stringify(payload)
+    body: `{"code":"MOBILE_LEGENDS","data":{"userId":"1007909047","zoneId":"13044"}}`
   })
   //const result = await fetch(request)
   const data = await result.json()
