@@ -1,13 +1,28 @@
-import { hitCoda, Result } from '../utils'
+import { Result } from '../utils'
 
-export default async function ml(id: number, zone: number): Promise<Result> {
-  const body = `voucherPricePoint.id=4150&voucherPricePoint.price=1579&voucherPricePoint.variablePrice=0&user.userId=${id}&user.zoneId=${zone}&voucherTypeName=MOBILE_LEGENDS&shopLang=id_ID`
-  const data = await hitCoda(body)
+export default async function ml(user_id: string, zone_id: string): Promise<Result> {
+  const payload = {
+    shop_code: 'MOBILE_LEGENDS',
+    data: {
+      user_id,
+      zone_id
+    }
+  }
+  const request = new Request('https://api-gw-prd.vocagame.com/gateway-ms/order/v1/client/transactions/verify', {
+    method: 'POST',
+    headers: {
+      'content-type': 'apllication/json',
+      'x-country': '1'
+    },
+    body: JSON.stringify(payload)
+  })
+  const result = await fetch(request)
+  const data = await result.json()
   return {
     success: true,
     game: 'Mobile Legends: Bang Bang',
     id,
     server: zone,
-    name:data.confirmationFields.username
+    name: data.data.username
   }
 }

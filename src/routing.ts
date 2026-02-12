@@ -31,7 +31,7 @@ export default async function callAPI(url: string): Promise<Result> {
       case path.includes('/mcgg'):
         return await router.mcgg(Number(id), Number(server))
       case path.includes('/ml'):
-        return await router.ml(Number(id), Number(server))
+        return await router.ml(id, server)
       case path.includes('/pb'):
         return await router.pb(id)
       case path.includes('/pgr'):
